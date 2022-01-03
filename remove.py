@@ -3,7 +3,7 @@ import sys
 import shutil
 
 # Get directory name
-mydir= r"C:\Users\nares\OneDrive\Documents\wb\_build"
+mydir= r"C:\Users\nares\OneDrive\Documents\cs229\_build"
 
 try:
     shutil.rmtree(mydir)
