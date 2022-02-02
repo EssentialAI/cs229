@@ -1,7 +1,0 @@
-format: jb-book
-root: index
-chapters:
-- file: cs229/table_of_contents
-- file: cs229/structure
-- file: cs229/Introduction
-- file: cs229/Prob_warmup
