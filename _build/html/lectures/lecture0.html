@@ -352,8 +352,8 @@ C = AB \in \mathbb{R}^{m \times p} \enspace \text{where, } C_{ij} = \sum_{k=1}^{
       a_m^Tb^1 &amp; a_m^Tb^2 &amp; ... &amp; a_m^Tb^p
       \end{bmatrix}\end{split}\]</div>
 <p>Remember that since <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{m \times n}\)</span> and <span class="math notranslate nohighlight">\(B \in \mathbb{R}^{n \times p}, a_i \in \mathbb{R}^n \text{ and } b^j \in \mathbb{R}^n\)</span>, so these inner products all make sense. This is the ‘natural’ representation when we represent <span class="math notranslate nohighlight">\(A\)</span> by rows and <span class="math notranslate nohighlight">\(B\)</span> by columns.</p>
-<p><strong>Symmetric Matrices</strong>
-A square matrix <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{n \times n}\)</span> is <strong>symmetric</strong> if <span class="math notranslate nohighlight">\(A=A^T\)</span>. It is <strong>anti-symmetric</strong> if <span class="math notranslate nohighlight">\(A=-A^T\)</span>. It is easy to show that any matrix <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{n \times n}\)</span>, the matrix <span class="math notranslate nohighlight">\(A+A^T\)</span> is symmetric and the matrix <span class="math notranslate nohighlight">\(A-A^T\)</span> is anti-symmetric. From this it follows that any square matrix <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{n \times n}\)</span> can be be represented as a sum of a symmetric matrix and an anti-symmetric matrix as shown below:</p>
+<p><strong>Symmetric Matrices</strong></p>
+<p>A square matrix <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{n \times n}\)</span> is <strong>symmetric</strong> if <span class="math notranslate nohighlight">\(A=A^T\)</span>. It is <strong>anti-symmetric</strong> if <span class="math notranslate nohighlight">\(A=-A^T\)</span>. It is easy to show that any matrix <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{n \times n}\)</span>, the matrix <span class="math notranslate nohighlight">\(A+A^T\)</span> is symmetric and the matrix <span class="math notranslate nohighlight">\(A-A^T\)</span> is anti-symmetric. From this it follows that any square matrix <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{n \times n}\)</span> can be be represented as a sum of a symmetric matrix and an anti-symmetric matrix as shown below:</p>
 <div class="math notranslate nohighlight">
 \[A = \frac{1}{2}(A+A^T)+\frac{1}{2}(A-A^T)\]</div>
 <p><strong>Norms</strong></p>
@@ -362,18 +362,155 @@ A square matrix <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{n
 \[||x||_{2} = \sqrt{\sum_{i=1}^{n}x_{i}^2}\]</div>
 <p>Note that <span class="math notranslate nohighlight">\(||x||_{2}^2 = x^Tx\)</span>
 More formally, norm is a function <span class="math notranslate nohighlight">\(f : \mathbb{R}^n \rightarrow \mathbb{R}\)</span> that satisfies <span class="math notranslate nohighlight">\(4\)</span> properties:</p>
-<ol class="simple">
-<li><p>For all <span class="math notranslate nohighlight">\(x \in \mathbb{R}^n, f(x) \geq 0\)</span> (non-negativity).</p></li>
-<li><p><span class="math notranslate nohighlight">\(f(x) = 0\)</span> if and only if <span class="math notranslate nohighlight">\(x=0\)</span> (definiteness).</p></li>
-<li><p>For all <span class="math notranslate nohighlight">\(x \in \mathbb{R}^n, t \in \mathbb{R}, f(tx) = |t|f(x)\)</span> (homogeneity).</p></li>
-<li><p>For all <span class="math notranslate nohighlight">\(x,y \in \mathbb{R}^n, f(x+y) \leq f(x) +f(y)\)</span> (triangle inequality)</p></li>
-</ol>
+<p style="line-height:180%;">
+<p><span class="math notranslate nohighlight">\(\rightarrow \text{For all } x \in \mathbb{R}^{n}, f(x) \geq 0. \text{ (non-negativity)}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\rightarrow f(x)=0 \text{ if and only if } x=0 \text{ (definiteness)}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\rightarrow \text{For all } x \in \mathbb{R}^{n}, t \in \mathbb{R}, f(tx) = |t|f(x). \text{ (homogeneity)}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\rightarrow \text{For all } x,y \in \mathbb{R}^{n}, f(x+y) \leq f(x) +f(y). \text{ (traingle inequality)}\)</span></p>
+</p>
 <p>Other examples of norms are the <span class="math notranslate nohighlight">\(l_1\)</span> norm,</p>
 <div class="math notranslate nohighlight">
 \[||x||_1 = \sum_{i=1}^{n}|x_i|\]</div>
 <p>and the <span class="math notranslate nohighlight">\(l_\infty\)</span> norm,</p>
 <div class="math notranslate nohighlight">
 \[||x||_\infty = max_i|x_i|\]</div>
+<p>Norms can also be defined for matrices, such as the Frobenius norm,</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}||A||_{F} = \sqrt{\sum_{i=1}^{m}\sum_{j=1}^{n}A_{ij}^2} = \sqrt{trace(A^TA)}\end{align}\]</div>
+<p><strong>Linear Independence and Rank</strong></p>
+<p>A set of vectors <span class="math notranslate nohighlight">\(\{x_1, x_2,..,x_n\} \subset \mathbb{R}^n\)</span> is set to be <strong>linearly independent</strong> if no vector can be represented as a linear combination of the remaining vectors. Conversely, if one vector belonging to the set can be represented as a linear combination of the remaining vectors, then the vectors are said to be <strong>linearly dependent</strong>. That is, if</p>
+<div class="math notranslate nohighlight">
+\[x_n = \sum_{i=1}^{n-1}\alpha_i x_i\]</div>
+<p>for some scalar values <span class="math notranslate nohighlight">\(\alpha_1,...,\alpha_{n-1} \in \mathbb{R}\)</span>,then we say that the vectors <span class="math notranslate nohighlight">\(\{x_1, x_2,..,x_n\}\)</span> are linearly dependent; otherwise, the vectors are linearly independent. For example, the vectors</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}x_1=\begin{bmatrix}
+1 \\
+2\\
+3\end{bmatrix}\enspace x_2 = \begin{bmatrix}
+4 \\
+1\\ 
+5 \end{bmatrix}\enspace x_3 = \begin{bmatrix}
+2 \\
+-3 \\
+-1\end{bmatrix}\end{split}\]</div>
+<p>are linearly dependent because <span class="math notranslate nohighlight">\(x_3 = -2x_1+x_2\)</span>.</p>
+<p><em>Column Rank</em></p>
+<p>The column rank of a matrix <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{m \times n}\)</span> is the size of the largest subset of columns of <span class="math notranslate nohighlight">\(A\)</span> that constitute a linearly independent set.</p>
+<p><em>Row Rank</em></p>
+<p>The row rank of a matrix <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{m \times n}\)</span> is the size of the largest subset of rows of <span class="math notranslate nohighlight">\(A\)</span> that constitute a linearly independent set.</p>
+<p>If, for matrix column rank is equal to row rank, then both quantities are collectively referred to as the <strong>rank of the matrix <span class="math notranslate nohighlight">\(A\)</span></strong></p>
+<p style="line-height:180%;">
+<p><span class="math notranslate nohighlight">\(\rightarrow \text{For } A \in \mathbb{R}^{m \times n}, \text{ rank}(A) \leq min(m,n). \text{ If rank}(A) = min(m,n), \text{then } A \text{ is said to be } \textbf{full rank}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\rightarrow \text{For } A \in \mathbb{R}^{m \times n}, \text{ rank}(A) = \text{ rank}(A^T)\)</span></p>
+<p><span class="math notranslate nohighlight">\(\rightarrow \text{For } A,B \in \mathbb{R}^{m \times n},\text{ rank}(A+B) \leq \text{ rank}(A) + \text{ rank}(B)\)</span></p>
+</p><p><strong>The Inverse of a Square Matrix</strong></p>
+<p>The <strong>inverse</strong> of a square matrix <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{n \times n}\)</span> is denoted <span class="math notranslate nohighlight">\(A^{-1}\)</span>, and is the unique matrix such that:</p>
+<div class="math notranslate nohighlight">
+\[A^{-1}A=I=AA^{-1}\]</div>
+<p>Note that not all matrices have inverses. Non-square matrices, for example, do not have inverse by definition. However, for some square matrices <span class="math notranslate nohighlight">\(A\)</span>, it may stil be the case that <span class="math notranslate nohighlight">\(A^{-1}\)</span> may not exist. In particular, we say that <span class="math notranslate nohighlight">\(A\)</span> is <strong>invertible</strong> or <strong>non-singular</strong> if <span class="math notranslate nohighlight">\(A^{-1}\)</span> exists and <strong>non-invertible</strong> or <strong>singular</strong> otherwise.</p>
+<p>In order for a square matrix <span class="math notranslate nohighlight">\(A\)</span> to have an inverse <span class="math notranslate nohighlight">\(A^{-1}\)</span>, <span class="math notranslate nohighlight">\(A\)</span> must be of full rank.</p>
+<p>The following are properties of the inverse; all assume that <span class="math notranslate nohighlight">\(A, B \in \mathbb{R}^{n \times n}\)</span> are non-singular:</p>
+<p style="line-height:180%;">
+<p><span class="math notranslate nohighlight">\(\rightarrow (A^{-1})^{-1}=A\)</span></p>
+<p><span class="math notranslate nohighlight">\(\rightarrow (AB)^{-1} = B^{-1}A^{-1}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\rightarrow (A^{-1})^T = (A^T)^{-1}\)</span></p>
+<p><span class="math notranslate nohighlight">\((A^T)^{-1}\)</span> is denoted by <span class="math notranslate nohighlight">\(A^{-T}\)</span></p>
+</p>
+<p><strong>Orthogonal Matrices</strong></p>
+<p>Two vectors <span class="math notranslate nohighlight">\(x,y \in \mathbb{R}^n\)</span> are <strong>orthogonal</strong> if <span class="math notranslate nohighlight">\(x^Ty=0\)</span>. A vector <span class="math notranslate nohighlight">\(x \in \mathbb{R}^n\)</span> is <strong>normalized</strong> if <span class="math notranslate nohighlight">\(||x||_2=1\)</span>. A square matrix <span class="math notranslate nohighlight">\(U \in \mathbb{R}^{n \times n}\)</span> is <strong>orthogonal</strong> <em>(note the different meanings when talking about vectors versus matrices)</em> if all its columns are orthogonal to each other and are normalized.</p>
+<p>It follows immediately from the definition of orthogonality and normality that</p>
+<div class="math notranslate nohighlight">
+\[U^TU = I = UU^T\]</div>
+<p>In other words, the inverse of an orthogonal matrix is its transpose. Note that if <span class="math notranslate nohighlight">\(U\)</span> is not square (i.e., <span class="math notranslate nohighlight">\(U \in \mathbb{R}^{m \times n}, \enspace n &lt; m\)</span>) but its columns are still orthonormal, then <span class="math notranslate nohighlight">\(U^TU=I\)</span>, but <span class="math notranslate nohighlight">\(UU^T \neq I\)</span>.</p>
+<p>Another nice property of orthogonal matrices is that operating on a vector with an orthogonal matrix will not change its <em>Euclidean norm</em>. i.e.,</p>
+<div class="math notranslate nohighlight">
+\[||Ux||_2 = ||x||_2\]</div>
+<p>for any <span class="math notranslate nohighlight">\(x \in \mathbb{R}^n, U \in \mathbb{R}^{n \times n}\)</span> orthogonal.</p>
+<p><strong>Range and nullspace of a Matrix</strong></p>
+<p>The span of a set of vectors <span class="math notranslate nohighlight">\(\begin{Bmatrix} x_{1},x_{2},...x_{n} \end{Bmatrix}\)</span> is the set of all vectors that can be expressed as a linear combination of <span class="math notranslate nohighlight">\(\begin{Bmatrix} x_{1},x_{2},...x_{n} \end{Bmatrix}\)</span>. That is,</p>
+<div class="math notranslate nohighlight">
+\[\text{span}(\begin{Bmatrix} x_{1},x_{2},...x_{n} \end{Bmatrix}) = \left \{ v:v = \sum_{i=1}^{n} \alpha_ix_i, \enspace \alpha_i \in \mathbb{R} \right \}\]</div>
+<p>It can be shown that if <span class="math notranslate nohighlight">\(\begin{Bmatrix} x_{1},x_{2},...x_{n} \end{Bmatrix}\)</span> is a set of <span class="math notranslate nohighlight">\(n\)</span> linearly independent vectors, where each <span class="math notranslate nohighlight">\(x_i \in \mathbb{R}^n\)</span>, then <span class="math notranslate nohighlight">\(\text{span}(\begin{Bmatrix} x_{1},x_{2},...x_{n} \end{Bmatrix}) = \mathbb{R}^n\)</span>. In other words, any vector <span class="math notranslate nohighlight">\(v \in \mathbb{R}^n\)</span> can be written as a linear combination of <span class="math notranslate nohighlight">\(x_1\)</span> through <span class="math notranslate nohighlight">\(x_n\)</span>.</p>
+<p>The <strong>projection</strong> of a vector <span class="math notranslate nohighlight">\(y \in \mathbb{R}^m\)</span> onto the span of <span class="math notranslate nohighlight">\(\begin{Bmatrix} x_{1},x_{2},...x_{n} \end{Bmatrix}\)</span> (here we assume <span class="math notranslate nohighlight">\(x_i \in \mathbb{R}^m\)</span>) is a vector <span class="math notranslate nohighlight">\(v \in \text{span}(\begin{Bmatrix} x_{1},x_{2},...x_{n} \end{Bmatrix})\)</span>, such that <span class="math notranslate nohighlight">\(v\)</span> is as close as possible to <span class="math notranslate nohighlight">\(y\)</span>, as measured by the Euclidean norm <span class="math notranslate nohighlight">\(||v-y||_2\)</span>. We denote the projection as <span class="math notranslate nohighlight">\(\text{Proj}(y;\begin{Bmatrix} x_{1},x_{2},...x_{n} \end{Bmatrix})\)</span> and can define it formally as,</p>
+<div class="math notranslate nohighlight">
+\[\text{Proj}(y;\begin{Bmatrix}x_{1},...,x_{n}\end{Bmatrix}) = \text{argmin}_{v \in span(\begin{Bmatrix}x_{1},...,x_{n}\end{Bmatrix})}||y-v||_{2}\]</div>
+<p>The range of a matrix <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{m \times n}\)</span>, denoted by <span class="math notranslate nohighlight">\(R(A)\)</span>, is the span of the columns of <span class="math notranslate nohighlight">\(A\)</span>. In other words,</p>
+<div class="math notranslate nohighlight">
+\[R(A) = \begin{Bmatrix}v \in \mathbb{R}^m : v = Ax, x \in \mathbb{R}^n \end{Bmatrix}\]</div>
+<p>The nullspace of a matrix <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{m \times n}\)</span>, denoted by <span class="math notranslate nohighlight">\(\mathcal{N}(A)\)</span> is the set of all vectors that equal to <span class="math notranslate nohighlight">\(0\)</span> when multiplied by <span class="math notranslate nohighlight">\(A\)</span>, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{N}(A) = \begin{Bmatrix} x \in \mathbb{R}^n : Ax = 0\end{Bmatrix}\]</div>
+<p><strong>Quadratic Forms and Positive Semidefinite Matrices</strong></p>
+<p>Given a square matrix <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{n \times n}\)</span> and a vector <span class="math notranslate nohighlight">\(x \in \mathbb{R}^{n}\)</span>, the scalar value <span class="math notranslate nohighlight">\(x^TAx\)</span> is called a <em>quadratic form</em>. Written explicitly, we see that</p>
+<div class="math notranslate nohighlight">
+\[\begin{align}x^TAx = \sum_{i=1}^{n}x_{i}(Ax)_{i} = \sum_{i=1}^{n}x_{i}\left (\sum_{j=1}^{n}A_{ij}x_{j}\right ) = \sum_{i=1}^{n}\sum_{j=1}^{n}A_{ij}x_{i}x_{j}\end{align}\]</div>
+<p>Note that,</p>
+<div class="math notranslate nohighlight">
+\[x^TAx = (x^TAx)^T = x^TA^Tx = x^T \left( \frac{1}{2}A + \frac{1}{2}A^T\right)x\]</div>
+<p>where the first equality follows from the fact that the transpose of a scalar is equal to itself, and the second equality follows from the fact that we are averaging two quantities which are themselves equal. From this, we can conclude that only the symmetric part of <span class="math notranslate nohighlight">\(A\)</span> contributes to the quadratic form. For this reason, we often implicitly assume that the matrices appearing in the quadratic form are symmetric.</p>
+<p>We have the following definitions:</p>
+<ul class="simple">
+<li><p>A symmetric matrix <span class="math notranslate nohighlight">\(A \in \mathbb{S}^n\)</span> is <span class = 'high'>positive definite</span> (PD) if for all non-zero vectors <span class="math notranslate nohighlight">\(x \in \mathbb{R}^n, x^TAx&gt;0\)</span>. This is usually denoted <span class="math notranslate nohighlight">\(A\succ0\)</span>, and often times the set of all positive definite matrices is denoted by <span class="math notranslate nohighlight">\(\mathbb{S}_{++}^n\)</span></p></li>
+<li><p>A symmetric matrix <span class="math notranslate nohighlight">\(A \in \mathbb{S}^n\)</span> is <span class = 'high'>positive semidefinite</span> (PSD) if for all non-zero vectors <span class="math notranslate nohighlight">\(x \in \mathbb{R}^n, x^TAx \geq 0\)</span>. This is usually denoted <span class="math notranslate nohighlight">\(A \succeq 0\)</span>, and often times the set of all positive semidefinite matrices is denoted by <span class="math notranslate nohighlight">\(\mathbb{S}_{+}^n\)</span></p></li>
+<li><p>A symmetric matrix <span class="math notranslate nohighlight">\(A \in \mathbb{S}^n\)</span> is <span class = 'high'>negative definite</span> (ND), denoted <span class="math notranslate nohighlight">\(A\prec0\)</span> if for all non-zero vectors <span class="math notranslate nohighlight">\(x \in \mathbb{R}^n, x^TAx&lt;0\)</span>.</p></li>
+<li><p>A symmetric matrix <span class="math notranslate nohighlight">\(A \in \mathbb{S}^n\)</span> is <span class = 'high'>negative semidefinite</span> (NSD), denoted <span class="math notranslate nohighlight">\(A \preceq 0\)</span> if for all non-zero vectors <span class="math notranslate nohighlight">\(x \in \mathbb{R}^n, x^TAx \leq 0\)</span>.</p></li>
+<li><p>A symmetric matrix <span class="math notranslate nohighlight">\(A \in \mathbb{S}^n\)</span> is <span class = 'high'>indefinite</span>, if it is neither positive semidefinite nor negative semidefinite - i.e., if there exists <span class="math notranslate nohighlight">\(x_{1}, x_{2} \in \mathbb{R}^n \)</span> such that <span class="math notranslate nohighlight">\(x_{1}^TAx_{1}&gt;0\)</span> and <span class="math notranslate nohighlight">\(x_2^TAx_2&lt;0\)</span>.</p></li>
+</ul>
+<p>It should be obvious that if <span class="math notranslate nohighlight">\(A\)</span> is positive definite, then <span class="math notranslate nohighlight">\(-A\)</span> is negative definite and vice versa. Likewise, if <span class="math notranslate nohighlight">\(A\)</span> is positive semidefinite then <span class="math notranslate nohighlight">\(-A\)</span> is negative semidefinite and vice versa. If <span class="math notranslate nohighlight">\(A\)</span> is indefinite, then so is <span class="math notranslate nohighlight">\(-A\)</span>.</p>
+<p>One important property of positive definite and negative definite matrices is that they are always full rank, and hence, invertible. To see why this is the case, suppose that some matrix <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{n \times n}\)</span> is not full rank. Then, suppose that the <span class="math notranslate nohighlight">\(j\)</span>th column of <span class="math notranslate nohighlight">\(A\)</span> is expressible as a linear combination of other <span class="math notranslate nohighlight">\(n-1\)</span> columns:</p>
+<div class="math notranslate nohighlight">
+\[a_j = \sum_{i \neq j} x_ia_i\]</div>
+<p>for some <span class="math notranslate nohighlight">\(x_1,..x_{j-1},x_{j+1},...,x_n \in \mathbb{R}\)</span>. Setting <span class="math notranslate nohighlight">\(x_j=-1\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[Ax = \sum_{i=1}^n x_ia_i=0\]</div>
+<p>But this implies <span class="math notranslate nohighlight">\(x^TAx=0\)</span> for some non-zero vector <span class="math notranslate nohighlight">\(x\)</span>, so <span class="math notranslate nohighlight">\(A\)</span> must be neither positive definite nor negative definite. Therefore, if <span class="math notranslate nohighlight">\(A\)</span> is either positive definite or negative definite, it must be full rank.</p>
+<p>Finally, there is one type of positive definite matrix that comes up frequently, and so deserves some special mention. Given any matrix <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{m \times n}\)</span> (not necessarily symmetric or even square), the matrix <span class="math notranslate nohighlight">\(G = A^TA\)</span> (sometimes called a <strong>Gram Matrix</strong>) is always positive semidefinite. Further, if <span class="math notranslate nohighlight">\(m \geq n\)</span> (and we assume for convenience that A is full rank), then <span class="math notranslate nohighlight">\(G=A^TA\)</span> is positive definite.</p>
+<p><strong>Eigenvalues and Eigenvectors</strong></p>
+<p>Given a square matrix <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{n \times n}\)</span>, we say that <span class="math notranslate nohighlight">\(\lambda \in \mathbb{C}\)</span> is an <strong>eigenvalue</strong> if <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(x \in \mathbb{C}^n\)</span> is the corresponding <strong>eigenvector</strong> if</p>
+<div class="math notranslate nohighlight">
+\[ Ax = \lambda x, \enspace x \neq 0 \]</div>
+<p>Intuitively, this definition means that multiplying <span class="math notranslate nohighlight">\(A\)</span> by the vector <span class="math notranslate nohighlight">\(x\)</span> results in a new vector that points in the same direction as <span class="math notranslate nohighlight">\(x\)</span>, but scaled by a factor <span class="math notranslate nohighlight">\(\lambda\)</span>. Also note that for any eigenvector <span class="math notranslate nohighlight">\(x \in \mathbb{C}^n\)</span> and scalar <span class="math notranslate nohighlight">\(t \in \mathbb{C}, A(cx) = cAx = c \lambda x = \lambda (cx)\)</span>, so <span class="math notranslate nohighlight">\(cx\)</span> is also an eigenvector. For this reason when we talk about ‘the’ eigenvector associated with <span class="math notranslate nohighlight">\(\lambda\)</span>, we usually assume that the eigenvector is normalized to have length <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>We can rewrite the equation above to state that <span class="math notranslate nohighlight">\((\lambda, x)\)</span> is an eigenvalue-eigenvector pair of <span class="math notranslate nohighlight">\(A\)</span> if,</p>
+<div class="math notranslate nohighlight">
+\[(\lambda I -A)x =0, \enspace x \neq 0\]</div>
+<p>But <span class="math notranslate nohighlight">\((\lambda I -A)x =0\)</span> has a non-zero solution to <span class="math notranslate nohighlight">\(x\)</span> if and only if <span class="math notranslate nohighlight">\((\lambda I -A)\)</span> has a non-empty nullspace, which is only the case if <span class="math notranslate nohighlight">\((\lambda I -A)\)</span> is singular, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[|(\lambda I -A)|=0\]</div>
+<p>We can now use the previous definition of the determinant to expand this expression <span class="math notranslate nohighlight">\(|(\lambda I -A)|\)</span> into a polynomial in <span class="math notranslate nohighlight">\(\lambda\)</span>, where <span class="math notranslate nohighlight">\(\lambda\)</span> will have degree <span class="math notranslate nohighlight">\(n\)</span>. It’s often called the characteristic polynomial of the matrix <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p>We then find the <span class="math notranslate nohighlight">\(n\)</span> roots of this characteristic polynomial and denote them by <span class="math notranslate nohighlight">\(\lambda_1, \lambda_2,...,\lambda_n\)</span>. These are all the eigenvalues of the matrix <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p>The following are the properties of eigenvalues and eigenvectors:</p>
+<ul class="simple">
+<li><p>The trace of A is equal to the sum of its eigenvalues,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[trace(A) = \sum_{i=1}^n \lambda_i\]</div>
+<ul class="simple">
+<li><p>The determinant of <span class="math notranslate nohighlight">\(A\)</span> is equal to the product of its eigenvalues,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[|A| = \prod_{i=1}^n \lambda_i\]</div>
+<ul class="simple">
+<li><p>The rank of <span class="math notranslate nohighlight">\(A\)</span> is equal to the number of non-zero eigenvalues of <span class="math notranslate nohighlight">\(A\)</span>.</p></li>
+<li><p>Supppose <span class="math notranslate nohighlight">\(A\)</span> is non-singular with eigenvalue <span class="math notranslate nohighlight">\(\lambda\)</span> and an associated eigenvector <span class="math notranslate nohighlight">\(x\)</span>. Then <span class="math notranslate nohighlight">\(\frac{1}{\lambda}\)</span> is an eigenvalue of <span class="math notranslate nohighlight">\(A^{-1}\)</span> with an associated eigenvector <span class="math notranslate nohighlight">\(x\)</span>, i.e., <span class="math notranslate nohighlight">\(A^{-1}x = (\frac{1}{\lambda})x\)</span>.</p></li>
+<li><p>The eigenvalues of a diagonal matrix <span class="math notranslate nohighlight">\(D = \text{diag}(d_1,...,d_n)\)</span> are just the diagonal entries <span class="math notranslate nohighlight">\(d_1,...,d_n\)</span></p></li>
+</ul>
+<p><strong>Eigenvalues and Eigenvectors of Symmetric Matrices</strong></p>
+<p>In general, the structures of the eigenvalues and eigenvectors of a general square matrix can be subtle to characterize. Fortunately, in most of the cases in machine learning, if suffices to deal with symmetric real matrices, whose eigenvalues and eigenvectors have remarkable properties.</p>
+<p>Throughout this section, let’s assume that <span class="math notranslate nohighlight">\(A\)</span> is a symmetric real matrix. We have the following properties:</p>
+<ul class="simple">
+<li><p>All eigenvalues of <span class="math notranslate nohighlight">\(A\)</span> are real numbers. We denote them by <span class="math notranslate nohighlight">\(\lambda_1,...,\lambda_n\)</span></p></li>
+<li><p>There exists a set of eigenvectors <span class="math notranslate nohighlight">\(u_1,...,u_n\)</span> such that:
+a) for all <span class="math notranslate nohighlight">\(i, u_i\)</span> is an eigenvector with eigenvalue <span class="math notranslate nohighlight">\(\lambda_i\)</span> and
+b) <span class="math notranslate nohighlight">\(u_1,...,u_n\)</span> are unit vectors and orthogonal to each other.</p></li>
+</ul>
+<p>Let <span class="math notranslate nohighlight">\(U\)</span> be the orthonormal matrix that contains <span class="math notranslate nohighlight">\(u_i\)</span>’s as columns:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}U = \begin{bmatrix}
+      | &amp; | &amp; | &amp; ... &amp; | \\
+      u^1 &amp; u^2 &amp; u^3 &amp; ... &amp; u^n \\
+      | &amp; | &amp; | &amp; ... &amp;|
+      \end{bmatrix}\end{split}\]</div>
+<p>Let <span class="math notranslate nohighlight">\(\Lambda\)</span></p>
 </div>
 
     <script type="text/x-thebe-config">

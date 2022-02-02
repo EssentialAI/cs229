@@ -158,6 +158,7 @@
 # Remember that since $A \in \mathbb{R}^{m \times n}$ and $B \in \mathbb{R}^{n \times p}, a_i \in \mathbb{R}^n \text{ and } b^j \in \mathbb{R}^n$, so these inner products all make sense. This is the 'natural' representation when we represent $A$ by rows and $B$ by columns.
 
 # **Symmetric Matrices**
+# 
 # A square matrix $A \in \mathbb{R}^{n \times n}$ is **symmetric** if $A=A^T$. It is **anti-symmetric** if $A=-A^T$. It is easy to show that any matrix $A \in \mathbb{R}^{n \times n}$, the matrix $A+A^T$ is symmetric and the matrix $A-A^T$ is anti-symmetric. From this it follows that any square matrix $A \in \mathbb{R}^{n \times n}$ can be be represented as a sum of a symmetric matrix and an anti-symmetric matrix as shown below:
 # 
 # $$A = \frac{1}{2}(A+A^T)+\frac{1}{2}(A-A^T)$$
@@ -170,10 +171,17 @@
 # 
 # Note that $||x||_{2}^2 = x^Tx$
 # More formally, norm is a function $f : \mathbb{R}^n \rightarrow \mathbb{R}$ that satisfies $4$ properties:
-# 1. For all $x \in \mathbb{R}^n, f(x) \geq 0$ (non-negativity).
-# 2. $f(x) = 0$ if and only if $x=0$ (definiteness).
-# 3. For all $x \in \mathbb{R}^n, t \in \mathbb{R}, f(tx) = |t|f(x)$ (homogeneity).
-# 4. For all $x,y \in \mathbb{R}^n, f(x+y) \leq f(x) +f(y)$ (triangle inequality)
+# 
+# <p style="line-height:180%;">
+#     
+# $\rightarrow \text{For all } x \in \mathbb{R}^{n}, f(x) \geq 0. \text{ (non-negativity)}$
+#     
+# $\rightarrow f(x)=0 \text{ if and only if } x=0 \text{ (definiteness)}$
+# 
+# $\rightarrow \text{For all } x \in \mathbb{R}^{n}, t \in \mathbb{R}, f(tx) = |t|f(x). \text{ (homogeneity)}$
+# 
+# $\rightarrow \text{For all } x,y \in \mathbb{R}^{n}, f(x+y) \leq f(x) +f(y). \text{ (traingle inequality)}$
+# </p>
 # 
 # Other examples of norms are the $l_1$ norm,
 # 
@@ -183,10 +191,227 @@
 # 
 # $$||x||_\infty = max_i|x_i|$$
 
+# Norms can also be defined for matrices, such as the Frobenius norm,
 # 
+# $$\begin{align}||A||_{F} = \sqrt{\sum_{i=1}^{m}\sum_{j=1}^{n}A_{ij}^2} = \sqrt{trace(A^TA)}\end{align}$$
+# 
+# **Linear Independence and Rank**
+# 
+# A set of vectors $\{x_1, x_2,..,x_n\} \subset \mathbb{R}^n$ is set to be **linearly independent** if no vector can be represented as a linear combination of the remaining vectors. Conversely, if one vector belonging to the set can be represented as a linear combination of the remaining vectors, then the vectors are said to be **linearly dependent**. That is, if
+# 
+# $$x_n = \sum_{i=1}^{n-1}\alpha_i x_i$$
+# 
+# for some scalar values $\alpha_1,...,\alpha_{n-1} \in \mathbb{R}$,then we say that the vectors $\{x_1, x_2,..,x_n\}$ are linearly dependent; otherwise, the vectors are linearly independent. For example, the vectors
+# 
+# $$x_1=\begin{bmatrix}
+# 1 \\
+# 2\\
+# 3\end{bmatrix}\enspace x_2 = \begin{bmatrix}
+# 4 \\
+# 1\\ 
+# 5 \end{bmatrix}\enspace x_3 = \begin{bmatrix}
+# 2 \\
+# -3 \\
+# -1\end{bmatrix}$$
+# 
+# are linearly dependent because $x_3 = -2x_1+x_2$.
+# 
+# _Column Rank_
+# 
+# The column rank of a matrix $A \in \mathbb{R}^{m \times n}$ is the size of the largest subset of columns of $A$ that constitute a linearly independent set.
+# 
+# _Row Rank_
+# 
+# The row rank of a matrix $A \in \mathbb{R}^{m \times n}$ is the size of the largest subset of rows of $A$ that constitute a linearly independent set.
+# 
+# If, for matrix column rank is equal to row rank, then both quantities are collectively referred to as the **rank of the matrix $A$**
+# 
+# <p style="line-height:180%;">
+#     
+# $\rightarrow \text{For } A \in \mathbb{R}^{m \times n}, \text{ rank}(A) \leq min(m,n). \text{ If rank}(A) = min(m,n), \text{then } A \text{ is said to be } \textbf{full rank}$
+# 
+# $\rightarrow \text{For } A \in \mathbb{R}^{m \times n}, \text{ rank}(A) = \text{ rank}(A^T)$
+# 
+# $\rightarrow \text{For } A,B \in \mathbb{R}^{m \times n},\text{ rank}(A+B) \leq \text{ rank}(A) + \text{ rank}(B)$
+# </p>
+
+# **The Inverse of a Square Matrix**
+# 
+# The **inverse** of a square matrix $A \in \mathbb{R}^{n \times n}$ is denoted $A^{-1}$, and is the unique matrix such that:
+# 
+# $$A^{-1}A=I=AA^{-1}$$
+# 
+# Note that not all matrices have inverses. Non-square matrices, for example, do not have inverse by definition. However, for some square matrices $A$, it may stil be the case that $A^{-1}$ may not exist. In particular, we say that $A$ is **invertible** or **non-singular** if $A^{-1}$ exists and **non-invertible** or **singular** otherwise.
+# 
+# In order for a square matrix $A$ to have an inverse $A^{-1}$, $A$ must be of full rank.
+# 
+# The following are properties of the inverse; all assume that $A, B \in \mathbb{R}^{n \times n}$ are non-singular:
+# 
+# <p style="line-height:180%;">
+#     
+# $\rightarrow (A^{-1})^{-1}=A$
+# 
+# $\rightarrow (AB)^{-1} = B^{-1}A^{-1}$
+# 
+# $\rightarrow (A^{-1})^T = (A^T)^{-1}$
+# 
+# $(A^T)^{-1}$ is denoted by $A^{-T}$
+# </p>
+# 
+# **Orthogonal Matrices**
+# 
+# Two vectors $x,y \in \mathbb{R}^n$ are **orthogonal** if $x^Ty=0$. A vector $x \in \mathbb{R}^n$ is **normalized** if $||x||_2=1$. A square matrix $U \in \mathbb{R}^{n \times n}$ is **orthogonal** _(note the different meanings when talking about vectors versus matrices)_ if all its columns are orthogonal to each other and are normalized.
+# 
+# It follows immediately from the definition of orthogonality and normality that
+# 
+# $$U^TU = I = UU^T$$
+# 
+# In other words, the inverse of an orthogonal matrix is its transpose. Note that if $U$ is not square (i.e., $U \in \mathbb{R}^{m \times n}, \enspace n < m$) but its columns are still orthonormal, then $U^TU=I$, but $UU^T \neq I$.
+# 
+# Another nice property of orthogonal matrices is that operating on a vector with an orthogonal matrix will not change its _Euclidean norm_. i.e.,
+# 
+# $$||Ux||_2 = ||x||_2$$
+# 
+# for any $x \in \mathbb{R}^n, U \in \mathbb{R}^{n \times n}$ orthogonal.
+# 
+# **Range and nullspace of a Matrix**
+# 
+# The span of a set of vectors $\begin{Bmatrix} x_{1},x_{2},...x_{n} \end{Bmatrix}$ is the set of all vectors that can be expressed as a linear combination of $\begin{Bmatrix} x_{1},x_{2},...x_{n} \end{Bmatrix}$. That is,
+# 
+# $$\text{span}(\begin{Bmatrix} x_{1},x_{2},...x_{n} \end{Bmatrix}) = \left \{ v:v = \sum_{i=1}^{n} \alpha_ix_i, \enspace \alpha_i \in \mathbb{R} \right \}$$
+# 
+# It can be shown that if $\begin{Bmatrix} x_{1},x_{2},...x_{n} \end{Bmatrix}$ is a set of $n$ linearly independent vectors, where each $x_i \in \mathbb{R}^n$, then $\text{span}(\begin{Bmatrix} x_{1},x_{2},...x_{n} \end{Bmatrix}) = \mathbb{R}^n$. In other words, any vector $v \in \mathbb{R}^n$ can be written as a linear combination of $x_1$ through $x_n$.
+# 
+# The **projection** of a vector $y \in \mathbb{R}^m$ onto the span of $\begin{Bmatrix} x_{1},x_{2},...x_{n} \end{Bmatrix}$ (here we assume $x_i \in \mathbb{R}^m$) is a vector $v \in \text{span}(\begin{Bmatrix} x_{1},x_{2},...x_{n} \end{Bmatrix})$, such that $v$ is as close as possible to $y$, as measured by the Euclidean norm $||v-y||_2$. We denote the projection as $\text{Proj}(y;\begin{Bmatrix} x_{1},x_{2},...x_{n} \end{Bmatrix})$ and can define it formally as,
+# 
+# $$\text{Proj}(y;\begin{Bmatrix}x_{1},...,x_{n}\end{Bmatrix}) = \text{argmin}_{v \in span(\begin{Bmatrix}x_{1},...,x_{n}\end{Bmatrix})}||y-v||_{2}$$
+# 
+# The range of a matrix $A \in \mathbb{R}^{m \times n}$, denoted by $R(A)$, is the span of the columns of $A$. In other words,
+# 
+# $$R(A) = \begin{Bmatrix}v \in \mathbb{R}^m : v = Ax, x \in \mathbb{R}^n \end{Bmatrix}$$
+# 
+# The nullspace of a matrix $A \in \mathbb{R}^{m \times n}$, denoted by $\mathcal{N}(A)$ is the set of all vectors that equal to $0$ when multiplied by $A$, i.e.,
+# 
+# $$\mathcal{N}(A) = \begin{Bmatrix} x \in \mathbb{R}^n : Ax = 0\end{Bmatrix}$$
+
+# **Quadratic Forms and Positive Semidefinite Matrices**
+# 
+# Given a square matrix $A \in \mathbb{R}^{n \times n}$ and a vector $x \in \mathbb{R}^{n}$, the scalar value $x^TAx$ is called a _quadratic form_. Written explicitly, we see that
+# 
+# $$\begin{align}x^TAx = \sum_{i=1}^{n}x_{i}(Ax)_{i} = \sum_{i=1}^{n}x_{i}\left (\sum_{j=1}^{n}A_{ij}x_{j}\right ) = \sum_{i=1}^{n}\sum_{j=1}^{n}A_{ij}x_{i}x_{j}\end{align}$$
+# 
+# Note that,
+# 
+# $$x^TAx = (x^TAx)^T = x^TA^Tx = x^T \left( \frac{1}{2}A + \frac{1}{2}A^T\right)x$$
+# 
+# where the first equality follows from the fact that the transpose of a scalar is equal to itself, and the second equality follows from the fact that we are averaging two quantities which are themselves equal. From this, we can conclude that only the symmetric part of $A$ contributes to the quadratic form. For this reason, we often implicitly assume that the matrices appearing in the quadratic form are symmetric.
+# 
+# We have the following definitions:
+# 
+# * A symmetric matrix $A \in \mathbb{S}^n$ is <span class = 'high'>positive definite</span> (PD) if for all non-zero vectors $x \in \mathbb{R}^n, x^TAx>0$. This is usually denoted $A\succ0$, and often times the set of all positive definite matrices is denoted by $\mathbb{S}_{++}^n$
+# 
+# * A symmetric matrix $A \in \mathbb{S}^n$ is <span class = 'high'>positive semidefinite</span> (PSD) if for all non-zero vectors $x \in \mathbb{R}^n, x^TAx \geq 0$. This is usually denoted $A \succeq 0$, and often times the set of all positive semidefinite matrices is denoted by $\mathbb{S}_{+}^n$
+# 
+# * A symmetric matrix $A \in \mathbb{S}^n$ is <span class = 'high'>negative definite</span> (ND), denoted $A\prec0$ if for all non-zero vectors $x \in \mathbb{R}^n, x^TAx<0$.
+# 
+# * A symmetric matrix $A \in \mathbb{S}^n$ is <span class = 'high'>negative semidefinite</span> (NSD), denoted $A \preceq 0$ if for all non-zero vectors $x \in \mathbb{R}^n, x^TAx \leq 0$.
+# 
+# * A symmetric matrix $A \in \mathbb{S}^n$ is <span class = 'high'>indefinite</span>, if it is neither positive semidefinite nor negative semidefinite - i.e., if there exists $x_{1}, x_{2} \in \mathbb{R}^n $ such that $x_{1}^TAx_{1}>0$ and $x_2^TAx_2<0$.
+# 
+# It should be obvious that if $A$ is positive definite, then $-A$ is negative definite and vice versa. Likewise, if $A$ is positive semidefinite then $-A$ is negative semidefinite and vice versa. If $A$ is indefinite, then so is $-A$.
+# 
+# One important property of positive definite and negative definite matrices is that they are always full rank, and hence, invertible. To see why this is the case, suppose that some matrix $A \in \mathbb{R}^{n \times n}$ is not full rank. Then, suppose that the $j$th column of $A$ is expressible as a linear combination of other $n-1$ columns:
+# 
+# $$a_j = \sum_{i \neq j} x_ia_i$$
+# 
+# for some $x_1,..x_{j-1},x_{j+1},...,x_n \in \mathbb{R}$. Setting $x_j=-1$, we have
+# 
+# $$Ax = \sum_{i=1}^n x_ia_i=0$$
+# 
+# But this implies $x^TAx=0$ for some non-zero vector $x$, so $A$ must be neither positive definite nor negative definite. Therefore, if $A$ is either positive definite or negative definite, it must be full rank.
+# 
+# Finally, there is one type of positive definite matrix that comes up frequently, and so deserves some special mention. Given any matrix $A \in \mathbb{R}^{m \times n}$ (not necessarily symmetric or even square), the matrix $G = A^TA$ (sometimes called a **Gram Matrix**) is always positive semidefinite. Further, if $m \geq n$ (and we assume for convenience that A is full rank), then $G=A^TA$ is positive definite.
+
+# **Eigenvalues and Eigenvectors**
+# 
+# Given a square matrix $A \in \mathbb{R}^{n \times n}$, we say that $\lambda \in \mathbb{C}$ is an **eigenvalue** if $A$ and $x \in \mathbb{C}^n$ is the corresponding **eigenvector** if 
+
+# $$ Ax = \lambda x, \enspace x \neq 0 $$
+# 
+# Intuitively, this definition means that multiplying $A$ by the vector $x$ results in a new vector that points in the same direction as $x$, but scaled by a factor $\lambda$. Also note that for any eigenvector $x \in \mathbb{C}^n$ and scalar $t \in \mathbb{C}, A(cx) = cAx = c \lambda x = \lambda (cx)$, so $cx$ is also an eigenvector. For this reason when we talk about 'the' eigenvector associated with $\lambda$, we usually assume that the eigenvector is normalized to have length $1$.
+# 
+# We can rewrite the equation above to state that $(\lambda, x)$ is an eigenvalue-eigenvector pair of $A$ if,
+# 
+# $$(\lambda I -A)x =0, \enspace x \neq 0$$
+# 
+# But $(\lambda I -A)x =0$ has a non-zero solution to $x$ if and only if $(\lambda I -A)$ has a non-empty nullspace, which is only the case if $(\lambda I -A)$ is singular, i.e.,
+# 
+# $$|(\lambda I -A)|=0$$
+
+# We can now use the previous definition of the determinant to expand this expression $|(\lambda I -A)|$ into a polynomial in $\lambda$, where $\lambda$ will have degree $n$. It's often called the characteristic polynomial of the matrix $A$.
+# 
+# We then find the $n$ roots of this characteristic polynomial and denote them by $\lambda_1, \lambda_2,...,\lambda_n$. These are all the eigenvalues of the matrix $A$.
+# 
+# The following are the properties of eigenvalues and eigenvectors:
+# 
+# * The trace of A is equal to the sum of its eigenvalues,
+# 
+# $$trace(A) = \sum_{i=1}^n \lambda_i$$
+# 
+# * The determinant of $A$ is equal to the product of its eigenvalues,
+# 
+# $$|A| = \prod_{i=1}^n \lambda_i$$
+# 
+# * The rank of $A$ is equal to the number of non-zero eigenvalues of $A$.
+# 
+# * Supppose $A$ is non-singular with eigenvalue $\lambda$ and an associated eigenvector $x$. Then $\frac{1}{\lambda}$ is an eigenvalue of $A^{-1}$ with an associated eigenvector $x$, i.e., $A^{-1}x = (\frac{1}{\lambda})x$.
+# 
+# * The eigenvalues of a diagonal matrix $D = \text{diag}(d_1,...,d_n)$ are just the diagonal entries $d_1,...,d_n$
+
+# **Eigenvalues and Eigenvectors of Symmetric Matrices**
+# 
+# In general, the structures of the eigenvalues and eigenvectors of a general square matrix can be subtle to characterize. Fortunately, in most of the cases in machine learning, if suffices to deal with symmetric real matrices, whose eigenvalues and eigenvectors have remarkable properties.
+# 
+# Throughout this section, let's assume that $A$ is a symmetric real matrix. We have the following properties:
+# 
+# * All eigenvalues of $A$ are real numbers. We denote them by $\lambda_1,...,\lambda_n$
+# 
+# * There exists a set of eigenvectors $u_1,...,u_n$ such that:
+# a) for all $i, u_i$ is an eigenvector with eigenvalue $\lambda_i$ and
+# b) $u_1,...,u_n$ are unit vectors and orthogonal to each other.
+# 
+# Let $U$ be the orthonormal matrix that contains $u_i$'s as columns:
+# 
+# $$U = \begin{bmatrix}
+#       | & | & | & ... & | \\
+#       u^1 & u^2 & u^3 & ... & u^n \\
+#       | & | & | & ... &|
+#       \end{bmatrix}$$
+#       
+# Let $\Lambda$
 
 # 
 
-# 
+# In[ ]:
 
-# 
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
