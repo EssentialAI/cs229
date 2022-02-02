@@ -1,0 +1,439 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linear Algebra Review &#8212; CS229 notes</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="shortcut icon" href="../_static/brain1.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lecture 1: Introduction to Machine Learning" href="Lecture-1.html" />
+    <link rel="prev" title="Overview" href="../index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/lightmode.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CS229 notes</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Overview
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Linear Algebra Review
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Lecture-1.html">
+   Lecture 1: Introduction to Machine Learning
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/lectures/lecture0.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/EssentialAI/cs229/main?urlpath=tree/lectures/lecture0.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Linear Algebra Review</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="linear-algebra-review">
+<h1>Linear Algebra Review<a class="headerlink" href="#linear-algebra-review" title="Permalink to this headline">¶</a></h1>
+<p><strong>Basic Notation</strong></p>
+<p>Linear algebra provides a way of compactly representing and operating on sets of linear equations. For example:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+4x_{1}-5x_{2} &amp;= -13 \\
+-2x_{1}+3x_{2} &amp;= 9
+\end{align}
+\end{split}\]</div>
+<p style="text-align:center">The matrix notation of above equations is:</p>
+<div class="math notranslate nohighlight">
+\[Ax =b\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{with } A = \begin{bmatrix}
+      4 &amp; -5 \\
+      -2 &amp; 3
+      \end{bmatrix}, \enspace b = \begin{bmatrix}
+      -13 \\
+      9
+      \end{bmatrix}\end{split}\]</div>
+<p>By <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{m \times n}\)</span>, we denote a matrix with <span class="math notranslate nohighlight">\(m\)</span> rows and <span class="math notranslate nohighlight">\(n\)</span> columns. By <span class="math notranslate nohighlight">\(x \in \mathbb{R}^n\)</span>, we denote vector with <span class="math notranslate nohighlight">\(n\)</span> entries.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}A = \begin{bmatrix}
+      a_{11} &amp; a_{12} &amp; a_{13} &amp; ... &amp; a_{1n} \\
+      a_{21} &amp; a_{22} &amp; a_{23} &amp; ... &amp; a_{2n} \\
+      a_{31} &amp; a_{32} &amp; a_{33} &amp; ... &amp; a_{3n} \\
+      ... &amp; ... &amp; ... &amp; ... &amp; ... \\
+      a_{m1} &amp; a_{m2} &amp; a_{m3} &amp; ... &amp; a_{mn}
+      \end{bmatrix}, \enspace \enspace x = \begin{bmatrix}
+      x_{1} \\
+      x_{2} \\
+      x_{3} \\
+      .. \\
+      x_{n}
+      \end{bmatrix}
+      \end{align}\end{split}\]</div>
+<p>We denote the <span class="math notranslate nohighlight">\(j\)</span>th column of <span class="math notranslate nohighlight">\(A\)</span> by <span class="math notranslate nohighlight">\(a^j\)</span> or <span class="math notranslate nohighlight">\(A_{:,j}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A = \begin{bmatrix}
+      | &amp; | &amp; | &amp; ... &amp; | \\
+      a^1 &amp; a^2 &amp; a^3 &amp; ... &amp; a^n \\
+      | &amp; | &amp; | &amp; ... &amp;|
+      \end{bmatrix}\end{split}\]</div>
+<p>We denote the <span class="math notranslate nohighlight">\(i\)</span>th row of <span class="math notranslate nohighlight">\(A\)</span> by <span class="math notranslate nohighlight">\(a^T\)</span> or <span class="math notranslate nohighlight">\(A_{i,:}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A = \begin{bmatrix}
+      - a_{1}^T - \\
+      - a_{2}^T - \\
+      .. \\
+      - a_{m}^T - 
+      \end{bmatrix}\end{split}\]</div>
+<p><strong>Matrix Multiplication</strong></p>
+<p>The product of two matrices <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{m \times n}\)</span> and <span class="math notranslate nohighlight">\(B \in \mathbb{R}^{n \times p}\)</span> is the matrix</p>
+<div class="math notranslate nohighlight">
+\[
+C = AB \in \mathbb{R}^{m \times p} \enspace \text{where, } C_{ij} = \sum_{k=1}^{n}A_{ik}B_{kj}\]</div>
+<p>Note that in order for the matrix product to exist, the number of columns in <span class="math notranslate nohighlight">\(A\)</span> must equal the number of rows in <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<p><strong>Vector-Vector Multiplication</strong></p>
+<p>Given two vectors <span class="math notranslate nohighlight">\(x,y \in \mathbb{R}^n\)</span>, the quantity <span class="math notranslate nohighlight">\(x^Ty\)</span>, sometimes called the <span class = 'high'>inner product or dot product</span> of the vectors, is a real number given by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align} x^Ty \in \mathbb{R} = \begin{matrix} [x_{1} &amp; x_{2} &amp; ... &amp; x_{n}]\end{matrix} \begin{bmatrix}
+      y_{1} \\
+      y_{2} \\
+      .. \\
+      y_{n}
+      \end{bmatrix} = \sum_{i=1}^{n}x_{i}y_{i}\end{align}\end{split}\]</div>
+<p>Given vectors <span class="math notranslate nohighlight">\(x \in \mathbb{R}^m, y \in \mathbb{R}^n\)</span> (not necessarily of the same size), <span class="math notranslate nohighlight">\(xy^T \in \mathbb{R}^{m \times n}\)</span> is called the <span class = 'high'>outer product</span> of the vectors. It is a matrix, whose entries are given by <span class="math notranslate nohighlight">\((xy^T)_{ij} = x_iy_j\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}xy^T \in \mathbb{R}^{m \times n} = \begin{bmatrix}
+      x_{1} \\
+      x_{2} \\
+      .. \\
+      x_{n}
+      \end{bmatrix}\begin{matrix} [y_{1} &amp; y_{2} &amp; ... &amp; y_{n}]\end{matrix} = \begin{bmatrix}
+      x_{1}y_{1} &amp; x_{1}y_{2} &amp; ... &amp; x_{1}y_{n} \\
+      x_{2}y_{1} &amp; x_{2}y_{2} &amp; ... &amp; x_{2}y_{n} \\
+      ... &amp; ... &amp; ... &amp; ... \\
+      x_{m}y_{1} &amp; x_{m}y_{2} &amp; ... &amp; x_{m}y_{n} \\
+      \end{bmatrix}\end{split}\]</div>
+<p><strong>Matrix-Vector Products</strong></p>
+<p>Given a matrix <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{m \times n}\)</span> and a vector <span class="math notranslate nohighlight">\(x \in \mathbb{R}^n\)</span>, their product is a vector <span class="math notranslate nohighlight">\(y = Ax \in \mathbb{R}^m\)</span>. There are a couple of ways of looking at matrix-vector multiplication, and we will look at each of them in turn.</p>
+<p>If we write <span class="math notranslate nohighlight">\(A\)</span> by rows, then we can express <span class="math notranslate nohighlight">\(Ax\)</span> as,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}y = Ax = \begin{bmatrix}
+      - a_{1}^T - \\
+      - a_{2}^T - \\
+      .. \\
+      - a_{m}^T - 
+      \end{bmatrix}x = \begin{bmatrix}
+      a_{1}^Tx\\
+      a_{2}^Tx \\
+      .. \\
+      a_{m}^Tx 
+      \end{bmatrix}\end{split}\]</div>
+<p>In other words, the <span class="math notranslate nohighlight">\(i\)</span>th entry of <span class="math notranslate nohighlight">\(y\)</span> is equal to the inner product of the <span class="math notranslate nohighlight">\(i\)</span>th row of <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y=a_i^Tx\)</span>.</p>
+<p>Alternatively, let’s write <span class="math notranslate nohighlight">\(A\)</span> in column form. In this case we see that,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}y = Ax = \begin{bmatrix}
+      | &amp; | &amp; | &amp; ... &amp; | \\
+      a^1 &amp; a^2 &amp; a^3 &amp; ... &amp; a^n \\
+      | &amp; | &amp; | &amp; ... &amp;|
+      \end{bmatrix} \begin{bmatrix}
+      x_{1} \\
+      x_{2} \\
+      x_{3} \\
+      .. \\
+      x_{n}
+      \end{bmatrix} = \begin{matrix}
+      a^1
+      \end{matrix}x_1+\begin{matrix}
+      a^2
+      \end{matrix}x_2+...+\begin{matrix}
+      a^n
+      \end{matrix}x_n\end{split}\]</div>
+<p>In other words, <span class="math notranslate nohighlight">\(y\)</span> is a <strong>linear combination</strong> of the columns of <span class="math notranslate nohighlight">\(A\)</span>, where the coefficients of the linear combination are given by the entries of <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<p><strong>Matrix-Matrix Products</strong></p>
+<p>Using the above information, we can view matrix-matrix multiplication from various perspectives. One of them is to view the matrix-matrix multiplication as a set of vector-vector products. The most obvious viewpoint, which follows immediately from the definition, is that the <span class="math notranslate nohighlight">\((i,j)\)</span>th entry of <span class="math notranslate nohighlight">\(C\)</span> is equal to the inner product of the <span class="math notranslate nohighlight">\(i\)</span>th row of <span class="math notranslate nohighlight">\(A\)</span> and the <span class="math notranslate nohighlight">\(j\)</span>th column of <span class="math notranslate nohighlight">\(B\)</span>. Symbolically, this looks like the following:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}C = AB = \begin{bmatrix}
+      - a_{1}^T - \\
+      - a_{2}^T - \\
+      .. \\
+      - a_{m}^T - 
+      \end{bmatrix}\begin{bmatrix}
+      | &amp; | &amp; | &amp; ... &amp; | \\
+      b^1 &amp; b^2 &amp; b^3 &amp; ... &amp; b^n \\
+      | &amp; | &amp; | &amp; ... &amp;|
+      \end{bmatrix}=\begin{bmatrix}
+      a_1^Tb^1 &amp; a_1^Tb^2 &amp; ... &amp; a_1^Tb^p \\
+      a_2^Tb^1 &amp; a_2^Tb^2 &amp; ... &amp; a_2^Tb^p \\
+      .. &amp; .. &amp; ... &amp; .. \\
+      a_m^Tb^1 &amp; a_m^Tb^2 &amp; ... &amp; a_m^Tb^p
+      \end{bmatrix}\end{split}\]</div>
+<p>Remember that since <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{m \times n}\)</span> and <span class="math notranslate nohighlight">\(B \in \mathbb{R}^{n \times p}, a_i \in \mathbb{R}^n \text{ and } b^j \in \mathbb{R}^n\)</span>, so these inner products all make sense. This is the ‘natural’ representation when we represent <span class="math notranslate nohighlight">\(A\)</span> by rows and <span class="math notranslate nohighlight">\(B\)</span> by columns.</p>
+<p><strong>Symmetric Matrices</strong>
+A square matrix <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{n \times n}\)</span> is <strong>symmetric</strong> if <span class="math notranslate nohighlight">\(A=A^T\)</span>. It is <strong>anti-symmetric</strong> if <span class="math notranslate nohighlight">\(A=-A^T\)</span>. It is easy to show that any matrix <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{n \times n}\)</span>, the matrix <span class="math notranslate nohighlight">\(A+A^T\)</span> is symmetric and the matrix <span class="math notranslate nohighlight">\(A-A^T\)</span> is anti-symmetric. From this it follows that any square matrix <span class="math notranslate nohighlight">\(A \in \mathbb{R}^{n \times n}\)</span> can be be represented as a sum of a symmetric matrix and an anti-symmetric matrix as shown below:</p>
+<div class="math notranslate nohighlight">
+\[A = \frac{1}{2}(A+A^T)+\frac{1}{2}(A-A^T)\]</div>
+<p><strong>Norms</strong></p>
+<p>A norm, <span class="math notranslate nohighlight">\(||x||\)</span>, of a vector is informally defined as the measure of ‘length’ of the vector. For example, we have the commonly used Eucledian or <span class="math notranslate nohighlight">\(l_{2}\)</span> norm,</p>
+<div class="math notranslate nohighlight">
+\[||x||_{2} = \sqrt{\sum_{i=1}^{n}x_{i}^2}\]</div>
+<p>Note that <span class="math notranslate nohighlight">\(||x||_{2}^2 = x^Tx\)</span>
+More formally, norm is a function <span class="math notranslate nohighlight">\(f : \mathbb{R}^n \rightarrow \mathbb{R}\)</span> that satisfies <span class="math notranslate nohighlight">\(4\)</span> properties:</p>
+<ol class="simple">
+<li><p>For all <span class="math notranslate nohighlight">\(x \in \mathbb{R}^n, f(x) \geq 0\)</span> (non-negativity).</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(x) = 0\)</span> if and only if <span class="math notranslate nohighlight">\(x=0\)</span> (definiteness).</p></li>
+<li><p>For all <span class="math notranslate nohighlight">\(x \in \mathbb{R}^n, t \in \mathbb{R}, f(tx) = |t|f(x)\)</span> (homogeneity).</p></li>
+<li><p>For all <span class="math notranslate nohighlight">\(x,y \in \mathbb{R}^n, f(x+y) \leq f(x) +f(y)\)</span> (triangle inequality)</p></li>
+</ol>
+<p>Other examples of norms are the <span class="math notranslate nohighlight">\(l_1\)</span> norm,</p>
+<div class="math notranslate nohighlight">
+\[||x||_1 = \sum_{i=1}^{n}|x_i|\]</div>
+<p>and the <span class="math notranslate nohighlight">\(l_\infty\)</span> norm,</p>
+<div class="math notranslate nohighlight">
+\[||x||_\infty = max_i|x_i|\]</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "EssentialAI/cs229",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lectures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../index.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Overview</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Lecture-1.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lecture 1: Introduction to Machine Learning</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Naresh Kumar<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
