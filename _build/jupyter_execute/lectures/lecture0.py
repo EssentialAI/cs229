@@ -3,7 +3,7 @@
 
 # # Linear Algebra Review
 # 
-# **Basic Notation**
+# #### Basic Notation
 # 
 # Linear algebra provides a way of compactly representing and operating on sets of linear equations. For example:
 # 
@@ -59,7 +59,7 @@
 #       .. \\
 #       - a_{m}^T - 
 #       \end{bmatrix}$$
-# **Matrix Multiplication**
+# #### Matrix Multiplication
 # 
 # The product of two matrices $A \in \mathbb{R}^{m \times n}$ and $B \in \mathbb{R}^{n \times p}$ is the matrix
 # 
@@ -68,7 +68,7 @@
 # 
 # Note that in order for the matrix product to exist, the number of columns in $A$ must equal the number of rows in $B$.
 # 
-# **Vector-Vector Multiplication**
+# ##### Vector-Vector Multiplication
 # 
 # Given two vectors $x,y \in \mathbb{R}^n$, the quantity $x^Ty$, sometimes called the <span class = 'high'>inner product or dot product</span> of the vectors, is a real number given by
 # 
@@ -93,7 +93,7 @@
 #       x_{m}y_{1} & x_{m}y_{2} & ... & x_{m}y_{n} \\
 #       \end{bmatrix}$$
 #       
-# **Matrix-Vector Products**
+# ##### Matrix-Vector Products
 # 
 # Given a matrix $A \in \mathbb{R}^{m \times n}$ and a vector $x \in \mathbb{R}^n$, their product is a vector $y = Ax \in \mathbb{R}^m$. There are a couple of ways of looking at matrix-vector multiplication, and we will look at each of them in turn.
 # 
@@ -111,11 +111,11 @@
 #       a_{m}^Tx 
 #       \end{bmatrix}$$
 
-# In other words, the $i$th entry of $y$ is equal to the inner product of the $i$th row of $A$ and $x$, $y=a_i^Tx$.
+# In other words, the $i$th entry of $y$ is equal to the inner product of the $i$th row of $A$ and $x$, $y_i=a_i^Tx$.
 # 
 # Alternatively, let's write $A$ in column form. In this case we see that,
 # 
-# $$y = Ax = \begin{bmatrix}
+# $$ y = Ax = \begin{bmatrix}
 #       | & | & | & ... & | \\
 #       a^1 & a^2 & a^3 & ... & a^n \\
 #       | & | & | & ... &|
@@ -131,11 +131,12 @@
 #       a^2
 #       \end{matrix}x_2+...+\begin{matrix}
 #       a^n
-#       \end{matrix}x_n$$
+#       \end{matrix}x_n
+# $$ (1)
 #       
 # In other words, $y$ is a **linear combination** of the columns of $A$, where the coefficients of the linear combination are given by the entries of $x$.
 # 
-# **Matrix-Matrix Products**
+# ##### Matrix-Matrix Products
 # 
 # Using the above information, we can view matrix-matrix multiplication from various perspectives. One of them is to view the matrix-matrix multiplication as a set of vector-vector products. The most obvious viewpoint, which follows immediately from the definition, is that the $(i,j)$th entry of $C$ is equal to the inner product of the $i$th row of $A$ and the $j$th column of $B$. Symbolically, this looks like the following:
 # 
@@ -144,7 +145,7 @@
 #       - a_{2}^T - \\
 #       .. \\
 #       - a_{m}^T - 
-#       \end{bmatrix}\begin{bmatrix}
+#       \end{bmatrix} \begin{bmatrix}
 #       | & | & | & ... & | \\
 #       b^1 & b^2 & b^3 & ... & b^n \\
 #       | & | & | & ... &|
@@ -153,23 +154,53 @@
 #       a_2^Tb^1 & a_2^Tb^2 & ... & a_2^Tb^p \\
 #       .. & .. & ... & .. \\
 #       a_m^Tb^1 & a_m^Tb^2 & ... & a_m^Tb^p
-#       \end{bmatrix}$$
+#       \end{bmatrix} $$
 #       
-# Remember that since $A \in \mathbb{R}^{m \times n}$ and $B \in \mathbb{R}^{n \times p}, a_i \in \mathbb{R}^n \text{ and } b^j \in \mathbb{R}^n$, so these inner products all make sense. This is the 'natural' representation when we represent $A$ by rows and $B$ by columns.
+# Remember that since $A \in \mathbb{R}^{m \times n}$ and $B \in \mathbb{R}^{n \times p}, a_i \in \mathbb{R}^n \text{ and } b^j \in \mathbb{R}^n$, so these inner products all make sense. This is the 'natural' representation when we represent $A$ by rows and $B$ by columns. Alternatively, we can represent $A$ by columns, and $B$ by rows. This representation leads to a much tricker interpretation of $AB$ as a sum of outer products. Symbolically,
+# 
+# $$ C = AB = \begin{bmatrix}
+#       | & | & | & ... & | \\
+#       a^1 & a^2 & a^3 & ... & a^n \\
+#       | & | & | & ... &|
+#       \end{bmatrix} \begin{bmatrix}
+#       - b_{1}^T - \\
+#       - b_{2}^T - \\
+#       .. \\
+#       - b_{n}^T - 
+#       \end{bmatrix} = \sum_{i=1}^{n}a^ib_{i}^T $$
+# 
+# Put another way, $AB$ is equal to the sum, over all $i$, of the outer product of the $i$th column of $A$ and the $i$th row of $B$. Since, in this case, $a^i \in \mathbb{R}^m$ and $b_i \in \mathbb{R}^p$, the dimension of the outer product $a^ib_i^T$ is $m \times p$, which coincides with the dimension of $C$. Chances are, the last equality above may appear confusing to you. If so, take the time to check it for yourself!
+# 
+# Second, we can also view matrix-matrix multiplication as a set of matrix-vector products. Specifically, if we represent $B$ by columns, we can view the columns of $C$ as matrix-vector products between $A$ and the columns of $B$. Symbolically,
+# 
+# $$
+# C = AB = A \begin{bmatrix}
+#       | & | & | & ... & | \\
+#       b^1 & b^2 & b^3 & ... & b^n \\
+#       | & | & | & ... &|
+#       \end{bmatrix} = \begin{bmatrix}
+#       | & | & | & ... & | \\
+#       Ab^1 & Ab^2 & Ab^3 & ... & Ab^n \\
+#       | & | & | & ... &|
+#       \end{bmatrix}
+# $$ (2)
 
-# **Symmetric Matrices**
+# #### Operations and Properties
+# 
+# ##### Symmetric Matrices
 # 
 # A square matrix $A \in \mathbb{R}^{n \times n}$ is **symmetric** if $A=A^T$. It is **anti-symmetric** if $A=-A^T$. It is easy to show that any matrix $A \in \mathbb{R}^{n \times n}$, the matrix $A+A^T$ is symmetric and the matrix $A-A^T$ is anti-symmetric. From this it follows that any square matrix $A \in \mathbb{R}^{n \times n}$ can be be represented as a sum of a symmetric matrix and an anti-symmetric matrix as shown below:
 # 
 # $$A = \frac{1}{2}(A+A^T)+\frac{1}{2}(A-A^T)$$
 
-# **Norms**
+# ##### Norms
 # 
 # A norm, $||x||$, of a vector is informally defined as the measure of 'length' of the vector. For example, we have the commonly used Eucledian or $l_{2}$ norm,
 # 
 # $$||x||_{2} = \sqrt{\sum_{i=1}^{n}x_{i}^2}$$
 # 
 # Note that $||x||_{2}^2 = x^Tx$
+# 
 # More formally, norm is a function $f : \mathbb{R}^n \rightarrow \mathbb{R}$ that satisfies $4$ properties:
 # 
 # <p style="line-height:180%;">
@@ -190,12 +221,16 @@
 # and the $l_\infty$ norm,
 # 
 # $$||x||_\infty = max_i|x_i|$$
+# 
+# In fact, all three norms presented so far are examples of the family of $l_p$ norms, which are parameterized by a real number $p \geq 1$ and defined as
+# 
+# $$||x||_p = \left( \sum_{i=1}^n|x_i|^p\right)^{1/p}$$
 
 # Norms can also be defined for matrices, such as the Frobenius norm,
 # 
 # $$\begin{align}||A||_{F} = \sqrt{\sum_{i=1}^{m}\sum_{j=1}^{n}A_{ij}^2} = \sqrt{trace(A^TA)}\end{align}$$
 # 
-# **Linear Independence and Rank**
+# ##### Linear Independence and Rank
 # 
 # A set of vectors $\{x_1, x_2,..,x_n\} \subset \mathbb{R}^n$ is set to be **linearly independent** if no vector can be represented as a linear combination of the remaining vectors. Conversely, if one vector belonging to the set can be represented as a linear combination of the remaining vectors, then the vectors are said to be **linearly dependent**. That is, if
 # 
@@ -235,7 +270,7 @@
 # $\rightarrow \text{For } A,B \in \mathbb{R}^{m \times n},\text{ rank}(A+B) \leq \text{ rank}(A) + \text{ rank}(B)$
 # </p>
 
-# **The Inverse of a Square Matrix**
+# ##### The Inverse of a Square Matrix
 # 
 # The **inverse** of a square matrix $A \in \mathbb{R}^{n \times n}$ is denoted $A^{-1}$, and is the unique matrix such that:
 # 
@@ -258,7 +293,7 @@
 # $(A^T)^{-1}$ is denoted by $A^{-T}$
 # </p>
 # 
-# **Orthogonal Matrices**
+# ##### Orthogonal Matrices
 # 
 # Two vectors $x,y \in \mathbb{R}^n$ are **orthogonal** if $x^Ty=0$. A vector $x \in \mathbb{R}^n$ is **normalized** if $||x||_2=1$. A square matrix $U \in \mathbb{R}^{n \times n}$ is **orthogonal** _(note the different meanings when talking about vectors versus matrices)_ if all its columns are orthogonal to each other and are normalized.
 # 
@@ -270,11 +305,11 @@
 # 
 # Another nice property of orthogonal matrices is that operating on a vector with an orthogonal matrix will not change its _Euclidean norm_. i.e.,
 # 
-# $$||Ux||_2 = ||x||_2$$
+# $$||Ux||_2 = ||x||_2$$ (3)
 # 
 # for any $x \in \mathbb{R}^n, U \in \mathbb{R}^{n \times n}$ orthogonal.
 # 
-# **Range and nullspace of a Matrix**
+# ##### Range and nullspace of a Matrix
 # 
 # The span of a set of vectors $\begin{Bmatrix} x_{1},x_{2},...x_{n} \end{Bmatrix}$ is the set of all vectors that can be expressed as a linear combination of $\begin{Bmatrix} x_{1},x_{2},...x_{n} \end{Bmatrix}$. That is,
 # 
@@ -294,7 +329,7 @@
 # 
 # $$\mathcal{N}(A) = \begin{Bmatrix} x \in \mathbb{R}^n : Ax = 0\end{Bmatrix}$$
 
-# **Quadratic Forms and Positive Semidefinite Matrices**
+# ##### Quadratic Forms and Positive Semidefinite Matrices
 # 
 # Given a square matrix $A \in \mathbb{R}^{n \times n}$ and a vector $x \in \mathbb{R}^{n}$, the scalar value $x^TAx$ is called a _quadratic form_. Written explicitly, we see that
 # 
@@ -332,7 +367,7 @@
 # 
 # Finally, there is one type of positive definite matrix that comes up frequently, and so deserves some special mention. Given any matrix $A \in \mathbb{R}^{m \times n}$ (not necessarily symmetric or even square), the matrix $G = A^TA$ (sometimes called a **Gram Matrix**) is always positive semidefinite. Further, if $m \geq n$ (and we assume for convenience that A is full rank), then $G=A^TA$ is positive definite.
 
-# **Eigenvalues and Eigenvectors**
+# ##### Eigenvalues and Eigenvectors
 # 
 # Given a square matrix $A \in \mathbb{R}^{n \times n}$, we say that $\lambda \in \mathbb{C}$ is an **eigenvalue** if $A$ and $x \in \mathbb{C}^n$ is the corresponding **eigenvector** if 
 
@@ -348,13 +383,13 @@
 # 
 # $$|(\lambda I -A)|=0$$
 
-# We can now use the previous definition of the determinant to expand this expression $|(\lambda I -A)|$ into a polynomial in $\lambda$, where $\lambda$ will have degree $n$. It's often called the characteristic polynomial of the matrix $A$.
+# We can now use the definition of the determinant to expand this expression $|(\lambda I -A)|$ into a polynomial in $\lambda$, where $\lambda$ will have degree $n$. It's often called the characteristic polynomial of the matrix $A$.
 # 
 # We then find the $n$ roots of this characteristic polynomial and denote them by $\lambda_1, \lambda_2,...,\lambda_n$. These are all the eigenvalues of the matrix $A$.
 # 
 # The following are the properties of eigenvalues and eigenvectors:
 # 
-# * The trace of A is equal to the sum of its eigenvalues,
+# * The trace of $A$ is equal to the sum of its eigenvalues,
 # 
 # $$trace(A) = \sum_{i=1}^n \lambda_i$$
 # 
@@ -368,7 +403,7 @@
 # 
 # * The eigenvalues of a diagonal matrix $D = \text{diag}(d_1,...,d_n)$ are just the diagonal entries $d_1,...,d_n$
 
-# **Eigenvalues and Eigenvectors of Symmetric Matrices**
+# ##### Eigenvalues and Eigenvectors of Symmetric Matrices
 # 
 # In general, the structures of the eigenvalues and eigenvectors of a general square matrix can be subtle to characterize. Fortunately, in most of the cases in machine learning, if suffices to deal with symmetric real matrices, whose eigenvalues and eigenvectors have remarkable properties.
 # 
@@ -377,7 +412,9 @@
 # * All eigenvalues of $A$ are real numbers. We denote them by $\lambda_1,...,\lambda_n$
 # 
 # * There exists a set of eigenvectors $u_1,...,u_n$ such that:
+# 
 # a) for all $i, u_i$ is an eigenvector with eigenvalue $\lambda_i$ and
+# 
 # b) $u_1,...,u_n$ are unit vectors and orthogonal to each other.
 # 
 # Let $U$ be the orthonormal matrix that contains $u_i$'s as columns:
@@ -386,17 +423,113 @@
 #       | & | & | & ... & | \\
 #       u^1 & u^2 & u^3 & ... & u^n \\
 #       | & | & | & ... &|
-#       \end{bmatrix}$$
+#       \end{bmatrix}$$ (4)
 #       
-# Let $\Lambda$
+# Let $\Lambda = \text{diag}(\lambda_1,...,\lambda_n)$ be the diagonal matrix that contains $\lambda_1,...,\lambda_n$ as entries on the diagonal. Using the view of matrix-matrix vector multiplication in equation {eq}`2`, we can verify that
+# 
+# $$AU = \begin{bmatrix}
+#       | & | & | & ... & | \\
+#       Au^1 & Au^2 & Au^3 & ... & Au^n \\
+#       | & | & | & ... &|
+#       \end{bmatrix} = \begin{bmatrix}
+#       | & | & | & ... & | \\
+#       \lambda_1u^1 & \lambda_2u^2 & \lambda_3u^3 & ... & \lambda_nu^n \\
+#       | & | & | & ... &|
+#       \end{bmatrix} = U\text{diag}(\lambda_1,...,\lambda_n)=U\Lambda$$
+#       
+# Recalling that orthonormal matrix $U$ satisfies $UU^T=I$ and using the equation above, we have
+# 
+# $$A = AUU^T = U \Lambda U^T$$ (5)
+# 
+# This new presentation of $A$ as  $U \Lambda U^T$ is often called <span class = 'high'>diagonalization</span> of the matrix $A$. The term diagonalization comes from the fact that with such representation, we can often effectively treat a symmetric matrix $A$ as a diagonal matrix - which is much easier to understand - w.r.t. the basis defined by the eigenvectors $U$. We will elaborate this below by several examples.
+# 
+# **Background: representing vector w.r.t. another basis:**
+# 
+# Any orthonormal matrix $U = \begin{bmatrix}
+#       | & | & | & ... & | \\
+#       u^1 & u^2 & u^3 & ... & u^n \\
+#       | & | & | & ... &|
+#       \end{bmatrix}$ defines a new basis (coordinate system) of $\mathbb{R}^n$ in the following sense. For any vector $x \in \mathbb{R}^n$ can be represented as a linear combination of $u_1,...,u_n$ with coefficient $\hat{x_1},...,\hat{x_n}$
+# 
+# $$x = \hat{x_1}u_1+...+\hat{x_n}u_n = U\hat x$$
+# 
+# where in the second equality we use the view of equation {eq}`1`. Indeed, such $\hat{x}$ uniquely exists
+# 
+# $$x = U\hat{x} = U^Tx = \hat{x}$$
+
+# In other words, the vector $\hat x = U^Tx$ can serve as another representation of the vector $x$ w.r.t. the basis defined by $U$.
+# 
+# ##### Diagonalizing matrix-vector multiplication:
+# 
+# With the setup above, we will see that left-multiplying matrix $A$ can be viewed as left-multiplying a diagonal matrix w.r.t. the basis of eigenvectors. Suppose $x$ is a vector and $\hat x$ is its representation w.r.t. to the basis of $U$. Let $z = Ax$ be the matrix-vector product. Now, let's compute the representation $z$ w.r.t. the basis of $U$:
+# 
+# Then, again using the fact that $UU^T=U^TU=I$ and equation {eq}`5`, we have that
+# 
+# $$\hat z = U^Tz = U^TAx = U^TU\Lambda U^Tx = \Lambda\hat x = \begin{bmatrix}
+# \lambda_1 \hat{x_1} \\
+# \lambda_2 \hat{x_2}\\
+# ... \\
+# \lambda_n \hat{x_n}\end{bmatrix}$$
+# 
+# We see that left-multiplying matrix $A$ in the original space is equivalent to left-multiplying the diagonal matrix $\Lambda$ w.r.t the new basis, which is merely scaling each coordinate by the value of corresponding eigenvalue.
+# 
+# Under the new basis, multiplying a matrix multiple times becomes much simpler as well. For example, suppose $q = AAAx$. Deriving out the analytical form of $q$ in terms of the entries of $A$ may be a nightmare under the original basis, but can be much easier under the new one:
+# 
+# $$\hat{q} = U^Tq = U^TAx = U^TU\Lambda U^TU\Lambda U^TU\Lambda U^Tx = \Lambda^3\hat x = \begin{bmatrix}
+# \lambda_1^3 \hat{x_1} \\
+# \lambda_2^3 \hat{x_2}\\
+# ... \\
+# \lambda_n^3 \hat{x_n}\end{bmatrix}$$ (6)
+# 
+# **"Diagonalizing" quadratic form:**
+# 
+# As a directly corollary, the quadratic form $x^TAx$ can also be simplified under the new basis.
+# 
+# $$x^TAx = x^TU\Lambda U^Tx = \hat x \Lambda \hat x = \sum_{i=1}^{n}\lambda_i \hat{x_i}^2$$ (7)
+# 
+# (Recall that with the old representation, $x^TAx = \sum_{i=1, j=1}^n x_i x_j A_{ij}$ involves a sum of $n^2$ terms instead of $n$ terms in the equation above.) With this viewpoint, we can also show that the definiteness of the matrix $A$ depends entirely on the sign of its eigenvalues:
+# 
+# <p style="line-height:180%;">
+#     
+# $\rightarrow \text{If all } \lambda_i > 0 \text{ then the matrix } A \text{ is positive definite because:}$
+# 
+# $$x^TAx = \sum_{i=1}^n \lambda_i \hat{x_i}^2 > 0 \text{ for any } \hat x \neq 0$$
+#     
+# $\rightarrow \text{If all } \lambda_i \geq 0 \text{ then the matrix } A \text{ is positive semi-definite because:}$
+#     
+# $$X^TAx  = \sum_{i=1}^n\lambda_i \hat{x_i}^2 \geq 0 \text{ for all }\hat x$$
+#     
+# $\rightarrow \text{Likewise, if all } \lambda_i <0 \text{ or } \lambda_i \leq 0 \text{, then A is negative definite or negative semidefinite respectively.}$
+# 
+# $\rightarrow \text{Finally, if A has both positive and negative eigenvalues, say } \lambda_i >0 \text{ and } \lambda_j <0,$
+#     
+# $\text{then it is indefinite.}$
+#     
+# This is because if we let $\hat x$ satisfy $\hat x = 1$ and $\hat x = 0, \enspace \forall k\neq i$, then $x^TAx = \sum_{i=1}^{n}\lambda_i \hat{x_i}^2>0$. Similarly, we can let $\hat x$ satisfy $\hat{x_j}=1$ and $\hat{x_k}=0, \enspace \forall k \neq j$, then $x^TAx = \sum_{i=1}^{n} \lambda_i \hat{x_i}^2 <0$.
+# 
+# </p>
+# 
+# An application where eigenvalues and eigenvectors come up frequently is in maximizing some function of a matrix. In particular, for a matrix $A \in \mathbb{S}^n$, consider the following maximization problem,
+# 
+# $$\text{max}_{x \in \mathbb{R}^n} \enspace x^TAx = \sum_{i=1}^{n} \lambda_i \hat{x_i}^2, \enspace \text{subject to } ||x||_2 ^ 2=1$$ (8)
+# 
+# i.e., we want to find the vector which maximizes the quadratic form. Assuming the eigenvalues are ordered as $\lambda_1 \geq \lambda_2 \geq ... \geq \lambda_n$, the optimal values of this optimization problem is $\lambda_1$ and any eigenvector $u_1$ corresponding to $\lambda_1$ is one of the maximizers.
+# 
+# We show this by using the diagonalization technique: Note that $||x||_2=||\hat x||_2$ by equation {eq}`3`, and using equation {eq}`7`, we can rewrite the optimization {eq}`8` as:
+# 
+# $$\text{max}_{x \in \mathbb{R}^n} \enspace \hat{x}^T\Lambda \hat{x} = \sum_{i=1}^n \lambda_i\hat{x_i}^2 \enspace \text{ subject to } ||\hat x||_2^2=1$$ (9)
+# 
+# Then, we have that the objective is upper bounded by $\lambda_1$:
+# 
+# $$\hat{x}^T \Lambda \hat x = \sum_{i=1}^n \lambda_i \hat{x_i}^2 \leq \sum_{i=1}^n \lambda_1 \hat{x_i}^2 = \lambda_1$$ (10)
+# 
+# Moreover, setting $\hat{x}=\begin{bmatrix}
+# 1 \\
+# 0\\
+# ..\\
+# 0\end{bmatrix}$ achieves the equality in the equation above, and this corresponds to setting $x=u_1$
 
 # 
-
-# In[ ]:
-
-
-
-
 
 # In[ ]:
 
