@@ -3,11 +3,11 @@
 
 # #### Lecture 1: Introduction to Machine Learning
 
-# The term 'Machine Learning' was coined by <span class = 'high'>Arthur Samuel</span>. He wrote a program that would learn to play [checkers](https://en.wikipedia.org/wiki/Checkers) by playing against itself without any kind of strategy being explicitly programmed into it. The program learned to improve itself by gaining experience by playing more and more games. This program my Arthuer Samuel is considered to be the start of Machine Learning.
+# The term 'Machine Learning' was coined by <span class = 'high'>Arthur Samuel</span>. He wrote a program that would learn to play [checkers](https://en.wikipedia.org/wiki/Checkers) by playing against itself without any kind of strategy being explicitly programmed into it. The program learned to improve itself by gaining experience by playing more and more games. This program by Arthuer Samuel is considered to be the start of Machine Learning.
 
 # A more common definition by <span class = 'high'>Tom Mitchell</span> (a professor at CMU) defines Machine Learning as:
 # 
-# ```{admonition} Note
+# ```{admonition} Definition
 # :class: note
 # A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E.
 # ```
