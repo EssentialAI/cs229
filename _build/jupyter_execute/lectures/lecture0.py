@@ -115,7 +115,7 @@
 # 
 # Alternatively, let's write $A$ in column form. In this case we see that,
 # 
-# $$ y = Ax = \begin{bmatrix}
+# $y = Ax = \begin{bmatrix}
 #       | & | & | & ... & | \\
 #       a^1 & a^2 & a^3 & ... & a^n \\
 #       | & | & | & ... &|
@@ -132,7 +132,7 @@
 #       \end{matrix}x_2+...+\begin{matrix}
 #       a^n
 #       \end{matrix}x_n
-# $$ (1)
+# $ (1)
 #       
 # In other words, $y$ is a **linear combination** of the columns of $A$, where the coefficients of the linear combination are given by the entries of $x$.
 # 
