@@ -406,7 +406,8 @@ C = AB \in \mathbb{R}^{m \times p} \enspace \text{where, } C_{ij} = \sum_{k=1}^{
       \end{bmatrix}\end{split}\]</div>
 <p>In other words, the <span class="math notranslate nohighlight">\(i\)</span>th entry of <span class="math notranslate nohighlight">\(y\)</span> is equal to the inner product of the <span class="math notranslate nohighlight">\(i\)</span>th row of <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y_i=a_i^Tx\)</span>.</p>
 <p>Alternatively, let’s write <span class="math notranslate nohighlight">\(A\)</span> in column form. In this case we see that,</p>
-<p><span class="math notranslate nohighlight">\(y = Ax = \begin{bmatrix}
+<div class="math notranslate nohighlight" id="equation-1">
+<span class="eqno">(1)<a class="headerlink" href="#equation-1" title="Permalink to this equation">¶</a></span>\[\begin{split} y = Ax = \begin{bmatrix}
       | &amp; | &amp; | &amp; ... &amp; | \\
       a^1 &amp; a^2 &amp; a^3 &amp; ... &amp; a^n \\
       | &amp; | &amp; | &amp; ... &amp;|
@@ -423,7 +424,7 @@ C = AB \in \mathbb{R}^{m \times p} \enspace \text{where, } C_{ij} = \sum_{k=1}^{
       \end{matrix}x_2+...+\begin{matrix}
       a^n
       \end{matrix}x_n
-\)</span> (1)</p>
+\end{split}\]</div>
 <p>In other words, <span class="math notranslate nohighlight">\(y\)</span> is a <strong>linear combination</strong> of the columns of <span class="math notranslate nohighlight">\(A\)</span>, where the coefficients of the linear combination are given by the entries of <span class="math notranslate nohighlight">\(x\)</span>.</p>
 </div>
 <div class="section" id="matrix-matrix-products">
@@ -460,7 +461,7 @@ C = AB \in \mathbb{R}^{m \times p} \enspace \text{where, } C_{ij} = \sum_{k=1}^{
 <p>Put another way, <span class="math notranslate nohighlight">\(AB\)</span> is equal to the sum, over all <span class="math notranslate nohighlight">\(i\)</span>, of the outer product of the <span class="math notranslate nohighlight">\(i\)</span>th column of <span class="math notranslate nohighlight">\(A\)</span> and the <span class="math notranslate nohighlight">\(i\)</span>th row of <span class="math notranslate nohighlight">\(B\)</span>. Since, in this case, <span class="math notranslate nohighlight">\(a^i \in \mathbb{R}^m\)</span> and <span class="math notranslate nohighlight">\(b_i \in \mathbb{R}^p\)</span>, the dimension of the outer product <span class="math notranslate nohighlight">\(a^ib_i^T\)</span> is <span class="math notranslate nohighlight">\(m \times p\)</span>, which coincides with the dimension of <span class="math notranslate nohighlight">\(C\)</span>. Chances are, the last equality above may appear confusing to you. If so, take the time to check it for yourself!</p>
 <p>Second, we can also view matrix-matrix multiplication as a set of matrix-vector products. Specifically, if we represent <span class="math notranslate nohighlight">\(B\)</span> by columns, we can view the columns of <span class="math notranslate nohighlight">\(C\)</span> as matrix-vector products between <span class="math notranslate nohighlight">\(A\)</span> and the columns of <span class="math notranslate nohighlight">\(B\)</span>. Symbolically,</p>
 <div class="math notranslate nohighlight" id="equation-2">
-<span class="eqno">(1)<a class="headerlink" href="#equation-2" title="Permalink to this equation">¶</a></span>\[\begin{split}
+<span class="eqno">(2)<a class="headerlink" href="#equation-2" title="Permalink to this equation">¶</a></span>\[\begin{split}
 C = AB = A \begin{bmatrix}
       | &amp; | &amp; | &amp; ... &amp; | \\
       b^1 &amp; b^2 &amp; b^3 &amp; ... &amp; b^n \\
@@ -559,7 +560,7 @@ C = AB = A \begin{bmatrix}
 <p>In other words, the inverse of an orthogonal matrix is its transpose. Note that if <span class="math notranslate nohighlight">\(U\)</span> is not square (i.e., <span class="math notranslate nohighlight">\(U \in \mathbb{R}^{m \times n}, \enspace n &lt; m\)</span>) but its columns are still orthonormal, then <span class="math notranslate nohighlight">\(U^TU=I\)</span>, but <span class="math notranslate nohighlight">\(UU^T \neq I\)</span>.</p>
 <p>Another nice property of orthogonal matrices is that operating on a vector with an orthogonal matrix will not change its <em>Euclidean norm</em>. i.e.,</p>
 <div class="math notranslate nohighlight" id="equation-3">
-<span class="eqno">(2)<a class="headerlink" href="#equation-3" title="Permalink to this equation">¶</a></span>\[||Ux||_2 = ||x||_2\]</div>
+<span class="eqno">(3)<a class="headerlink" href="#equation-3" title="Permalink to this equation">¶</a></span>\[||Ux||_2 = ||x||_2\]</div>
 <p>for any <span class="math notranslate nohighlight">\(x \in \mathbb{R}^n, U \in \mathbb{R}^{n \times n}\)</span> orthogonal.</p>
 </div>
 <div class="section" id="range-and-nullspace-of-a-matrix">
@@ -648,12 +649,12 @@ C = AB = A \begin{bmatrix}
 <p>b) <span class="math notranslate nohighlight">\(u_1,...,u_n\)</span> are unit vectors and orthogonal to each other.</p>
 <p>Let <span class="math notranslate nohighlight">\(U\)</span> be the orthonormal matrix that contains <span class="math notranslate nohighlight">\(u_i\)</span>’s as columns:</p>
 <div class="math notranslate nohighlight" id="equation-4">
-<span class="eqno">(3)<a class="headerlink" href="#equation-4" title="Permalink to this equation">¶</a></span>\[\begin{split}U = \begin{bmatrix}
+<span class="eqno">(4)<a class="headerlink" href="#equation-4" title="Permalink to this equation">¶</a></span>\[\begin{split}U = \begin{bmatrix}
       | &amp; | &amp; | &amp; ... &amp; | \\
       u^1 &amp; u^2 &amp; u^3 &amp; ... &amp; u^n \\
       | &amp; | &amp; | &amp; ... &amp;|
       \end{bmatrix}\end{split}\]</div>
-<p>Let <span class="math notranslate nohighlight">\(\Lambda = \text{diag}(\lambda_1,...,\lambda_n)\)</span> be the diagonal matrix that contains <span class="math notranslate nohighlight">\(\lambda_1,...,\lambda_n\)</span> as entries on the diagonal. Using the view of matrix-matrix vector multiplication in equation <a class="reference internal" href="#equation-2">(1)</a>, we can verify that</p>
+<p>Let <span class="math notranslate nohighlight">\(\Lambda = \text{diag}(\lambda_1,...,\lambda_n)\)</span> be the diagonal matrix that contains <span class="math notranslate nohighlight">\(\lambda_1,...,\lambda_n\)</span> as entries on the diagonal. Using the view of matrix-matrix vector multiplication in equation <a class="reference internal" href="#equation-2">(2)</a>, we can verify that</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}AU = \begin{bmatrix}
       | &amp; | &amp; | &amp; ... &amp; | \\
@@ -666,7 +667,7 @@ C = AB = A \begin{bmatrix}
       \end{bmatrix} = U\text{diag}(\lambda_1,...,\lambda_n)=U\Lambda\end{split}\]</div>
 <p>Recalling that orthonormal matrix <span class="math notranslate nohighlight">\(U\)</span> satisfies <span class="math notranslate nohighlight">\(UU^T=I\)</span> and using the equation above, we have</p>
 <div class="math notranslate nohighlight" id="equation-5">
-<span class="eqno">(4)<a class="headerlink" href="#equation-5" title="Permalink to this equation">¶</a></span>\[A = AUU^T = U \Lambda U^T\]</div>
+<span class="eqno">(5)<a class="headerlink" href="#equation-5" title="Permalink to this equation">¶</a></span>\[A = AUU^T = U \Lambda U^T\]</div>
 <p>This new presentation of <span class="math notranslate nohighlight">\(A\)</span> as  <span class="math notranslate nohighlight">\(U \Lambda U^T\)</span> is often called <span class = 'high'>diagonalization</span> of the matrix <span class="math notranslate nohighlight">\(A\)</span>. The term diagonalization comes from the fact that with such representation, we can often effectively treat a symmetric matrix <span class="math notranslate nohighlight">\(A\)</span> as a diagonal matrix - which is much easier to understand - w.r.t. the basis defined by the eigenvectors <span class="math notranslate nohighlight">\(U\)</span>. We will elaborate this below by several examples.</p>
 <p><strong>Background: representing vector w.r.t. another basis:</strong></p>
 <p>Any orthonormal matrix <span class="math notranslate nohighlight">\(U = \begin{bmatrix}
@@ -676,7 +677,7 @@ C = AB = A \begin{bmatrix}
       \end{bmatrix}\)</span> defines a new basis (coordinate system) of <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> in the following sense. For any vector <span class="math notranslate nohighlight">\(x \in \mathbb{R}^n\)</span> can be represented as a linear combination of <span class="math notranslate nohighlight">\(u_1,...,u_n\)</span> with coefficient <span class="math notranslate nohighlight">\(\hat{x_1},...,\hat{x_n}\)</span></p>
 <div class="math notranslate nohighlight">
 \[x = \hat{x_1}u_1+...+\hat{x_n}u_n = U\hat x\]</div>
-<p>where in the second equality we use the view of equation <code class="xref eq docutils literal notranslate"><span class="pre">1</span></code>. Indeed, such <span class="math notranslate nohighlight">\(\hat{x}\)</span> uniquely exists</p>
+<p>where in the second equality we use the view of equation <a class="reference internal" href="#equation-1">(1)</a>. Indeed, such <span class="math notranslate nohighlight">\(\hat{x}\)</span> uniquely exists</p>
 <div class="math notranslate nohighlight">
 \[x = U\hat{x} = U^Tx = \hat{x}\]</div>
 <p>In other words, the vector <span class="math notranslate nohighlight">\(\hat x = U^Tx\)</span> can serve as another representation of the vector <span class="math notranslate nohighlight">\(x\)</span> w.r.t. the basis defined by <span class="math notranslate nohighlight">\(U\)</span>.</p>
@@ -684,7 +685,7 @@ C = AB = A \begin{bmatrix}
 <div class="section" id="diagonalizing-matrix-vector-multiplication">
 <h3>Diagonalizing matrix-vector multiplication:<a class="headerlink" href="#diagonalizing-matrix-vector-multiplication" title="Permalink to this headline">¶</a></h3>
 <p>With the setup above, we will see that left-multiplying matrix <span class="math notranslate nohighlight">\(A\)</span> can be viewed as left-multiplying a diagonal matrix w.r.t. the basis of eigenvectors. Suppose <span class="math notranslate nohighlight">\(x\)</span> is a vector and <span class="math notranslate nohighlight">\(\hat x\)</span> is its representation w.r.t. to the basis of <span class="math notranslate nohighlight">\(U\)</span>. Let <span class="math notranslate nohighlight">\(z = Ax\)</span> be the matrix-vector product. Now, let’s compute the representation <span class="math notranslate nohighlight">\(z\)</span> w.r.t. the basis of <span class="math notranslate nohighlight">\(U\)</span>:</p>
-<p>Then, again using the fact that <span class="math notranslate nohighlight">\(UU^T=U^TU=I\)</span> and equation <a class="reference internal" href="#equation-5">(4)</a>, we have that</p>
+<p>Then, again using the fact that <span class="math notranslate nohighlight">\(UU^T=U^TU=I\)</span> and equation <a class="reference internal" href="#equation-5">(5)</a>, we have that</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\hat z = U^Tz = U^TAx = U^TU\Lambda U^Tx = \Lambda\hat x = \begin{bmatrix}
 \lambda_1 \hat{x_1} \\
@@ -694,7 +695,7 @@ C = AB = A \begin{bmatrix}
 <p>We see that left-multiplying matrix <span class="math notranslate nohighlight">\(A\)</span> in the original space is equivalent to left-multiplying the diagonal matrix <span class="math notranslate nohighlight">\(\Lambda\)</span> w.r.t the new basis, which is merely scaling each coordinate by the value of corresponding eigenvalue.</p>
 <p>Under the new basis, multiplying a matrix multiple times becomes much simpler as well. For example, suppose <span class="math notranslate nohighlight">\(q = AAAx\)</span>. Deriving out the analytical form of <span class="math notranslate nohighlight">\(q\)</span> in terms of the entries of <span class="math notranslate nohighlight">\(A\)</span> may be a nightmare under the original basis, but can be much easier under the new one:</p>
 <div class="math notranslate nohighlight" id="equation-6">
-<span class="eqno">(5)<a class="headerlink" href="#equation-6" title="Permalink to this equation">¶</a></span>\[\begin{split}\hat{q} = U^Tq = U^TAx = U^TU\Lambda U^TU\Lambda U^TU\Lambda U^Tx = \Lambda^3\hat x = \begin{bmatrix}
+<span class="eqno">(6)<a class="headerlink" href="#equation-6" title="Permalink to this equation">¶</a></span>\[\begin{split}\hat{q} = U^Tq = U^TAx = U^TU\Lambda U^TU\Lambda U^TU\Lambda U^Tx = \Lambda^3\hat x = \begin{bmatrix}
 \lambda_1^3 \hat{x_1} \\
 \lambda_2^3 \hat{x_2}\\
 ... \\
@@ -702,7 +703,7 @@ C = AB = A \begin{bmatrix}
 <p><strong>“Diagonalizing” quadratic form:</strong></p>
 <p>As a directly corollary, the quadratic form <span class="math notranslate nohighlight">\(x^TAx\)</span> can also be simplified under the new basis.</p>
 <div class="math notranslate nohighlight" id="equation-7">
-<span class="eqno">(6)<a class="headerlink" href="#equation-7" title="Permalink to this equation">¶</a></span>\[x^TAx = x^TU\Lambda U^Tx = \hat x \Lambda \hat x = \sum_{i=1}^{n}\lambda_i \hat{x_i}^2\]</div>
+<span class="eqno">(7)<a class="headerlink" href="#equation-7" title="Permalink to this equation">¶</a></span>\[x^TAx = x^TU\Lambda U^Tx = \hat x \Lambda \hat x = \sum_{i=1}^{n}\lambda_i \hat{x_i}^2\]</div>
 <p>(Recall that with the old representation, <span class="math notranslate nohighlight">\(x^TAx = \sum_{i=1, j=1}^n x_i x_j A_{ij}\)</span> involves a sum of <span class="math notranslate nohighlight">\(n^2\)</span> terms instead of <span class="math notranslate nohighlight">\(n\)</span> terms in the equation above.) With this viewpoint, we can also show that the definiteness of the matrix <span class="math notranslate nohighlight">\(A\)</span> depends entirely on the sign of its eigenvalues:</p>
 <p style="line-height:180%;">
 <p><span class="math notranslate nohighlight">\(\rightarrow \text{If all } \lambda_i &gt; 0 \text{ then the matrix } A \text{ is positive definite because:}\)</span></p>
@@ -718,14 +719,14 @@ C = AB = A \begin{bmatrix}
 </p>
 <p>An application where eigenvalues and eigenvectors come up frequently is in maximizing some function of a matrix. In particular, for a matrix <span class="math notranslate nohighlight">\(A \in \mathbb{S}^n\)</span>, consider the following maximization problem,</p>
 <div class="math notranslate nohighlight" id="equation-8">
-<span class="eqno">(7)<a class="headerlink" href="#equation-8" title="Permalink to this equation">¶</a></span>\[\text{max}_{x \in \mathbb{R}^n} \enspace x^TAx = \sum_{i=1}^{n} \lambda_i \hat{x_i}^2, \enspace \text{subject to } ||x||_2 ^ 2=1\]</div>
+<span class="eqno">(8)<a class="headerlink" href="#equation-8" title="Permalink to this equation">¶</a></span>\[\text{max}_{x \in \mathbb{R}^n} \enspace x^TAx = \sum_{i=1}^{n} \lambda_i \hat{x_i}^2, \enspace \text{subject to } ||x||_2 ^ 2=1\]</div>
 <p>i.e., we want to find the vector which maximizes the quadratic form. Assuming the eigenvalues are ordered as <span class="math notranslate nohighlight">\(\lambda_1 \geq \lambda_2 \geq ... \geq \lambda_n\)</span>, the optimal values of this optimization problem is <span class="math notranslate nohighlight">\(\lambda_1\)</span> and any eigenvector <span class="math notranslate nohighlight">\(u_1\)</span> corresponding to <span class="math notranslate nohighlight">\(\lambda_1\)</span> is one of the maximizers.</p>
-<p>We show this by using the diagonalization technique: Note that <span class="math notranslate nohighlight">\(||x||_2=||\hat x||_2\)</span> by equation <a class="reference internal" href="#equation-3">(2)</a>, and using equation <a class="reference internal" href="#equation-7">(6)</a>, we can rewrite the optimization <a class="reference internal" href="#equation-8">(7)</a> as:</p>
+<p>We show this by using the diagonalization technique: Note that <span class="math notranslate nohighlight">\(||x||_2=||\hat x||_2\)</span> by equation <a class="reference internal" href="#equation-3">(3)</a>, and using equation <a class="reference internal" href="#equation-7">(7)</a>, we can rewrite the optimization <a class="reference internal" href="#equation-8">(8)</a> as:</p>
 <div class="math notranslate nohighlight" id="equation-9">
-<span class="eqno">(8)<a class="headerlink" href="#equation-9" title="Permalink to this equation">¶</a></span>\[\text{max}_{x \in \mathbb{R}^n} \enspace \hat{x}^T\Lambda \hat{x} = \sum_{i=1}^n \lambda_i\hat{x_i}^2 \enspace \text{ subject to } ||\hat x||_2^2=1\]</div>
+<span class="eqno">(9)<a class="headerlink" href="#equation-9" title="Permalink to this equation">¶</a></span>\[\text{max}_{x \in \mathbb{R}^n} \enspace \hat{x}^T\Lambda \hat{x} = \sum_{i=1}^n \lambda_i\hat{x_i}^2 \enspace \text{ subject to } ||\hat x||_2^2=1\]</div>
 <p>Then, we have that the objective is upper bounded by <span class="math notranslate nohighlight">\(\lambda_1\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-10">
-<span class="eqno">(9)<a class="headerlink" href="#equation-10" title="Permalink to this equation">¶</a></span>\[\hat{x}^T \Lambda \hat x = \sum_{i=1}^n \lambda_i \hat{x_i}^2 \leq \sum_{i=1}^n \lambda_1 \hat{x_i}^2 = \lambda_1\]</div>
+<span class="eqno">(10)<a class="headerlink" href="#equation-10" title="Permalink to this equation">¶</a></span>\[\hat{x}^T \Lambda \hat x = \sum_{i=1}^n \lambda_i \hat{x_i}^2 \leq \sum_{i=1}^n \lambda_1 \hat{x_i}^2 = \lambda_1\]</div>
 <p>Moreover, setting <span class="math notranslate nohighlight">\(\hat{x}=\begin{bmatrix}
 1 \\
 0\\

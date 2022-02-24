@@ -1,17 +1,10 @@
 /* The Modal (background) */
-@font-face {
-  font-family: regular;
-  src: url('fonts/sf_pro/SF-Pro-Text-Regular.otf');
-}
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
 
-@font-face {
-  font-family: bolde;
-  src: url('fonts/sf_pro/SF-Pro-Text-Bold.otf');
-}
 h1{
   font-size: 24px;
   /* color: black; */
-  font-family: bolde;
+  font-family: -apple-system,BlinkMacSystemFont,segoe ui,Roboto,Oxygen,Ubuntu,Cantarell,open sans,helvetica neue,sans-serif;
   text-decoration: none;
   margin-top : 1px;
   margin-bottom : 10px;
@@ -19,17 +12,16 @@ h1{
   /* text-shadow: 2px 2px #83c5be; */
 }
 body {
-  font-size: 16px;
+  font-size: 17px;
   padding: -10px;
   text-align: justify;
   line-height: 140%;
   margin-bottom:-10px;
-  font-family: regular;
 }
 h2{
-  font-size: 22px;
+  font-size: 20px;
   /* color: black; */
-  font-family: bolde;
+  font-family: -apple-system,BlinkMacSystemFont,segoe ui,Roboto,Oxygen,Ubuntu,Cantarell,open sans,helvetica neue,sans-serif;
   text-decoration: none;
   margin-top : 1px;
   margin-bottom : 10px;
@@ -37,11 +29,15 @@ h2{
   /* text-shadow: 2px 2px #83c5be; */
 }
 
+a {
+  text-align: left;
+}
 .high {
-  font-size: 17px;
   color:#E83E8C;
 }
-
+.bhigh {
+  color:#030F86;
+}
 .latex{
   font-size: 15px;
 }
@@ -49,7 +45,18 @@ h2{
 h3{
   font-size: 18px;
   color: blue;
-  font-family: bolde;
+  font-family: -apple-system,BlinkMacSystemFont,segoe ui,Roboto,Oxygen,Ubuntu,Cantarell,open sans,helvetica neue,sans-serif;
+  text-decoration: none;
+  margin-top : 1px;
+  margin-bottom : 10px;
+  font-weight: 600;
+  /* text-shadow: 2px 2px #83c5be; */
+}
+
+h4{
+  font-size: 18px;
+  color: blue;
+  font-family: -apple-system,BlinkMacSystemFont,segoe ui,Roboto,Oxygen,Ubuntu,Cantarell,open sans,helvetica neue,sans-serif;
   text-decoration: none;
   margin-top : 1px;
   margin-bottom : 10px;
