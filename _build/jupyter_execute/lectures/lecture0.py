@@ -72,14 +72,20 @@
 # 
 # Given two vectors $x,y \in \mathbb{R}^n$, the quantity $x^Ty$, sometimes called the <span class = 'high'>inner product or dot product</span> of the vectors, is a real number given by
 # 
+# <br>
+# 
 # $$\begin{align} x^Ty \in \mathbb{R} = \begin{matrix} [x_{1} & x_{2} & ... & x_{n}]\end{matrix} \begin{bmatrix}
 #       y_{1} \\
 #       y_{2} \\
 #       .. \\
 #       y_{n}
 #       \end{bmatrix} = \sum_{i=1}^{n}x_{i}y_{i}\end{align}$$
-#       
+# 
+# <br>
+# 
 # Given vectors $x \in \mathbb{R}^m, y \in \mathbb{R}^n$ (not necessarily of the same size), $xy^T \in \mathbb{R}^{m \times n}$ is called the <span class = 'high'>outer product</span> of the vectors. It is a matrix, whose entries are given by $(xy^T)_{ij} = x_iy_j$:
+# 
+# <br>
 # 
 # $$xy^T \in \mathbb{R}^{m \times n} = \begin{bmatrix}
 #       x_{1} \\
@@ -92,6 +98,8 @@
 #       ... & ... & ... & ... \\
 #       x_{m}y_{1} & x_{m}y_{2} & ... & x_{m}y_{n} \\
 #       \end{bmatrix}$$
+# 
+# <br>
 #       
 # ##### Matrix-Vector Products
 # 
